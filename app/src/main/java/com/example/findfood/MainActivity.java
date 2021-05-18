@@ -17,6 +17,8 @@ import com.example.findfood.model.MainModel;
 import com.example.findfood.model.MainModel1;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView,recyclerView1;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     MainAdapter mainAdapter;
     ArrayList<MainModel1> mainModel1s;
     MainAdapter1 mainAdapter1;
+    public static String emailuser = "";
 
     Button btnTrangCaNhan;
 
@@ -32,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Date currentTime = Calendar.getInstance().getTime();
+        if (currentTime.getHours() <12) {
+
+        }
 
         btnTrangCaNhan = findViewById(R.id.btnTrangCaNhan);
         btnTrangCaNhan.setOnClickListener(new View.OnClickListener() {
@@ -78,5 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
         mainAdapter1 = new MainAdapter1(MainActivity.this,mainModel1s);
         recyclerView1.setAdapter(mainAdapter1);
+
+        Intent intent = getIntent();
+        emailuser = intent.getStringExtra("email");
     }
 }
