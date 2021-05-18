@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import com.example.findfood.R;
-import com.example.findfood.model.Items;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.ArrayList;
@@ -20,22 +19,22 @@ import java.util.List;
 
 public class AdapterViewPayer extends SliderViewAdapter<AdapterViewPayer.SliderAdapterVH> {
     private Context context;
-    private List<Items> items = new ArrayList<>();
+    private List<ModelItem> modelItems = new ArrayList<>();
 
     public AdapterViewPayer(Context context) {
         this.context = context;
     }
 
-    public void ViewPagerAdapter(List<Items> item) {
-        this.items = items;
+    public void ViewPagerAdapter(List<ModelItem> modelItems) {
+        this.modelItems = modelItems;
         notifyDataSetChanged();
     }
     public void deleteitem(int postion){
-        this.items.remove(postion);
+        this.modelItems.remove(postion);
         notifyDataSetChanged();
     }
-    public void addItem(Items sliderItem) {
-        this.items.add(sliderItem);
+    public void addItem(ModelItem sliderItem) {
+        this.modelItems.add(sliderItem);
         notifyDataSetChanged();
     }
     @Override
@@ -47,7 +46,7 @@ public class AdapterViewPayer extends SliderViewAdapter<AdapterViewPayer.SliderA
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, final int position) {
 
-        Items sliderItem = items.get(position);
+        ModelItem sliderItem = modelItems.get(position);
 
         viewHolder.textViewDescription.setText(sliderItem.getDescription());
         viewHolder.textViewDescription.setTextSize(16);
@@ -68,7 +67,7 @@ public class AdapterViewPayer extends SliderViewAdapter<AdapterViewPayer.SliderA
     @Override
     public int getCount() {
         //slider view count could be dynamic size
-        return items.size();
+        return modelItems.size();
     }
 
     class SliderAdapterVH extends SliderViewAdapter.ViewHolder {

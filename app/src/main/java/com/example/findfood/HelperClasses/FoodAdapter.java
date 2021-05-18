@@ -21,7 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.findfood.Databases.DatabaseFood;
 import com.example.findfood.FoodProfileActivity;
+import com.example.findfood.CallBack.FoodCallBack;
 import com.example.findfood.R;
+import com.example.findfood.model.Favorite;
 import com.example.findfood.model.Food;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +32,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -71,7 +74,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
         holder.title.setText(categories.getNamefood());
         holder.txtdiachi.setText(categories.getDiachi());
         user = FirebaseAuth.getInstance().getCurrentUser();
-        databaseFood = new databaseFood(context);
+        databaseFood = new DatabaseFood(context);
         fvrtref = FirebaseDatabase.getInstance().getReference("favourites");
         fvrt_listRef = FirebaseDatabase.getInstance().getReference("favoriteList").child(user.getUid());
 
