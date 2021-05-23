@@ -198,44 +198,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        recyclerView = findViewById(R.id.rcv);
-//        Integer[] langLogo = {R.drawable.family,R.drawable.km50,R.drawable.km129,R.drawable.freegacoca,R.drawable.voucher99k};
-//
-//        mainModels = new ArrayList<>();
-//        for (int i=0;i<langLogo.length;i++){
-//            MainModel model = new MainModel(langLogo[i]);
-//            mainModels.add(model);
-//        }
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false);
-
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//
-//        mainAdapter = new MainAdapter(MainActivity.this,mainModels);
-//        recyclerView.setAdapter(mainAdapter);
-
-
-        //mon an quanh ban
-
-//        recyclerView1 = findViewById(R.id.rcv_1);
-//        String [] tenQuanList = {"Trà Sữa Bông","Bonpas Bakery","Cơm gà Duyên","Bún bò Huế"};
-//        String [] diaChiQuanList = {"234 Núi Thành","02 Xô Viết Nghệ Tĩnh","128 Hoàng Diệu","30 Lý Thài Tổ"};
-//        mainModel1s = new ArrayList<>();
-
-//        for (int i=0;i<tenQuanList.length;i++){
-//            MainModel1 model1 = new MainModel1(tenQuanList[i],diaChiQuanList[i]);
-//            mainModel1s.add(model1);
-//        }
-//        LinearLayoutManager layoutManager1 = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false);
-//
-//        recyclerView1.setLayoutManager(layoutManager1);
-//        recyclerView1.setItemAnimator(new DefaultItemAnimator());
-//
-//        mainAdapter1 = new MainAdapter1(MainActivity.this,mainModel1s);
-//        recyclerView1.setAdapter(mainAdapter1);
-
         Intent intent = getIntent();
         emailuser = intent.getStringExtra("email");
         return ;
@@ -245,10 +208,20 @@ public class MainActivity extends AppCompatActivity {
         List<ModelItem> sliderItemList = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             ModelItem sliderItem = new ModelItem();
-            if (i % 2 == 0) {
-                sliderItem.setImageurl("https://photos.app.goo.gl/nHs9bM3CsrDnezTe9");
-            } else {
-                sliderItem.setImageurl("https://photos.app.goo.gl/GGaLWwT9NaZYhpmD7");
+            switch (i) {
+                case 0:
+                    sliderItem.setImageurl("https://1.bp.blogspot.com/-1Q2XPYvxMag/YKOI0H3dA9I/AAAAAAAAAB4/ox70QTj9a4831YbPkZgWmk_roKqspC4ogCNcBGAsYHQ/s1747/family.png");
+                    break;
+                case 1:
+                    sliderItem.setImageurl("https://1.bp.blogspot.com/-cZh16lRm7d4/YKOI0E2gbjI/AAAAAAAAAB0/iSFMyBJrUzsnu9dWpbK1FTWgr9CWcqqtACNcBGAsYHQ/s970/5.png");
+                    break;
+                case 2:
+                    sliderItem.setImageurl("https://1.bp.blogspot.com/-wN9fUhMoGTo/YKOIzEN-hZI/AAAAAAAAABs/hHOiWywVYuEG5CenGgut4AMUyvuq1uk8ACNcBGAsYHQ/s970/2.png");
+                    break;
+                case 3:
+                    sliderItem.setImageurl("https://1.bp.blogspot.com/-p-f9fqrBZ0w/YKOIzrCE-rI/AAAAAAAAABw/0CqSJS6QvQw2TWKUhtXpB6Q-2e0-HGwdgCNcBGAsYHQ/s970/4.png");
+                    break;
+
             }
             sliderItemList.add(sliderItem);
         }
@@ -261,10 +234,9 @@ public class MainActivity extends AppCompatActivity {
             adapter.deleteitem(adapter.getCount() - 1);
     }
 
-
     public void addNewItem(SliderView sliderView) {
         ModelItem sliderItem = new ModelItem();
-        sliderItem.setImageurl("https://photos.app.goo.gl/bgrTzSKTsTsGZxa87");
+        sliderItem.setImageurl("https://1.bp.blogspot.com/-W445RQ2YtbU/YKOI0sIDkzI/AAAAAAAAACA/7r2uGRJFKzkbNjG7i6mZbKaJTLzpNhKwQCNcBGAsYHQ/s970/giamgia.png");
         adapter.addItem(sliderItem);
     }
 

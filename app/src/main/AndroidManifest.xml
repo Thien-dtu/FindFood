@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_logo1"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindFood">
-        <activity android:name=".FoodProductActivity"></activity>
+        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".FoodProductActivity" />
         <activity android:name=".MessegerActivity" />
         <activity android:name=".ThanhToanActivity" />
         <activity android:name=".View.HomePage" />

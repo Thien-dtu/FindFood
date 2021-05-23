@@ -29,6 +29,7 @@ public class AdapterViewPayer extends SliderViewAdapter<AdapterViewPayer.SliderA
         this.modelItems = modelItems;
         notifyDataSetChanged();
     }
+
     public void deleteitem(int postion){
         this.modelItems.remove(postion);
         notifyDataSetChanged();
