@@ -13,11 +13,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.findfood.CallBack.CategoriesCallBack;
 import com.example.findfood.CallBack.FoodCallBack;
+import com.example.findfood.CallBack.UserCallBack;
 import com.example.findfood.Databases.DatabaseCategories;
 import com.example.findfood.Databases.DatabaseFood;
+import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.HelperClasses.AdapterViewPayer;
 import com.example.findfood.HelperClasses.CategoryAdapter;
 import com.example.findfood.HelperClasses.FoodAdapter;
@@ -29,14 +32,22 @@ import com.example.findfood.model.Categories;
 import com.example.findfood.model.Food;
 import com.example.findfood.model.MainModel;
 import com.example.findfood.model.MainModel1;
+import com.example.findfood.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
     private AdapterViewPayer adapter;
@@ -51,7 +62,13 @@ public class MainActivity extends AppCompatActivity {
     DatabaseFood databaseFood;
     RecyclerView rcvhome,rcvmonan;
 
-    Button btnTrangCaNhan;
+    FirebaseStorage storage;
+    StorageReference storageReference;
+    CircleImageView anhdaidien;
+    DatabaseUser databaseUser;
+    FirebaseUser firebaseUser;
+    String anh;
+
 
 
 //    RecyclerView recyclerView,recyclerView1;
@@ -67,10 +84,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         sliderView = findViewById(R.id.imageSlider);
         rcvhome = findViewById(R.id.rcvhome);
         rcvmonan = findViewById(R.id.rcvmonan);
         txtslogan = findViewById(R.id.txtslogan);
+        anhdaidien = findViewById(R.id.anhdaidien);
         databaseCategories = new DatabaseCategories(getApplicationContext());
         datacategories = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(datacategories,getApplicationContext());
@@ -79,7 +98,29 @@ public class MainActivity extends AppCompatActivity {
         rcvhome.setHasFixedSize(true);
         rcvhome.setAdapter(categoryAdapter);
 
-        btnTrangCaNhan = findViewById(R.id.btnTrangCaNhan);
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+        databaseUser = new DatabaseUser(getApplicationContext());
+        databaseUser.getAll(new UserCallBack() {
+            @Override
+            public void onSuccess(ArrayList<User> lists) {
+                for (int i = 0; i < lists.size(); i++) {
+                    if (lists.get(i).getToken()!=null && lists.get(i).getToken().equalsIgnoreCase(firebaseUser.getUid())) {
+                        anh = lists.get(i).getImage();
+                    }
+                }
+                if (anh ==null){
+                    Picasso.get().load("https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg").into(anhdaidien);
+                }else if (anh !=null){
+                    Picasso.get().load(anh).into(anhdaidien);
+                }
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
 
         Date currentTime = Calendar.getInstance().getTime();
         if (currentTime.getHours() <12) {
@@ -190,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         addNewItem(sliderView);
 
 
-        btnTrangCaNhan.setOnClickListener(new View.OnClickListener() {
+        anhdaidien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), TrangCaNhan.class);

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,18 +12,24 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.findfood.CallBack.UserCallBack;
 import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.View.User.TrangCaNhan;
 import com.example.findfood.model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -30,6 +37,8 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -72,11 +81,11 @@ public class EditProfile extends AppCompatActivity {
                 for (int i = 0; i < lists.size(); i++) {
                     if (lists.get(i).getToken()!=null && lists.get(i).getToken().equalsIgnoreCase(firebaseUser.getUid())) {
                         name = lists.get(i).getName();
-                        diachi=lists.get(i).getDiachi();
-                        mail=lists.get(i).getEmail();
-                        phone=lists.get(i).getPhone();
-                        pass=lists.get(i).getPassword();
-                        anh=lists.get(i).getImage();
+                        diachi = lists.get(i).getDiachi();
+                        mail = lists.get(i).getEmail();
+                        phone = lists.get(i).getPhone();
+                        pass = lists.get(i).getPassword();
+                        anh = lists.get(i).getImage();
                     }
                 }
                 edtaddress.setText(diachi);
@@ -124,6 +133,7 @@ public class EditProfile extends AppCompatActivity {
                     String phone = edtphone.getText().toString().trim();
                     String ten = edtname.getText().toString().trim();
                     String diachi = edtaddress.getText().toString().trim();
+
                     if (email.isEmpty() || phone.isEmpty() || ten.isEmpty() || diachi.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ các trường", Toast.LENGTH_SHORT).show();
                     } else if (!email.matches("^[a-zA-Z][a-z0-9_\\.]{4,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
@@ -144,6 +154,7 @@ public class EditProfile extends AppCompatActivity {
                         databaseUser.update(store);
                         Intent intent = new Intent(getApplicationContext(), TrangCaNhan.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
 
@@ -155,13 +166,15 @@ public class EditProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TrangCaNhan.class);
                 startActivity(intent);
+                finish();
             }
         });
+
     }
 
     private void change() {
 
-        final StorageReference imageFolder = storageReference.child("User/" + UUID.randomUUID().toString());
+        final StorageReference imageFolder = storageReference.child("Users/" + UUID.randomUUID().toString());
         imageFolder.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -178,6 +191,9 @@ public class EditProfile extends AppCompatActivity {
                         store.setToken(firebaseUser.getUid());
                         databaseUser = new DatabaseUser(getApplicationContext());
                         databaseUser.update(store);
+                        Intent intent = new Intent(getApplicationContext(), TrangCaNhan.class);
+                        startActivity(intent);
+                        finish();
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {

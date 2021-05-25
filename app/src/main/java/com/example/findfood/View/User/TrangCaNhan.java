@@ -20,6 +20,7 @@ import com.example.findfood.CallBack.UserCallBack;
 import com.example.findfood.DangNhapActivity;
 import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.EditProfile;
+import com.example.findfood.MainActivity;
 import com.example.findfood.MessegerActivity;
 import com.example.findfood.R;
 import com.example.findfood.model.User;
@@ -35,11 +36,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class TrangCaNhan extends AppCompatActivity{
+public class TrangCaNhan extends AppCompatActivity {
+    public static ImageView back;
     private Switch darkModeSwitch;
     RelativeLayout edtEditProfile;
     ImageView profileCircleImageView;
-    TextView usernameTextView, email, logout,history,txteditprofile,txtchangepassword,map;
+    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword,map;
     DatabaseUser databaseUser;
     FirebaseUser firebaseUser;
 
@@ -51,11 +53,12 @@ public class TrangCaNhan extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_ca_nhan);
 
+        back = findViewById(R.id.back);
         edtEditProfile = findViewById(R.id.edtEditProfile);
         profileCircleImageView = findViewById(R.id.profileCircleImageView);
         usernameTextView = findViewById(R.id.usernameTextView);
         email= findViewById(R.id.email);
-        logout = findViewById(R.id.txtlogout);
+        txtlogout = findViewById(R.id.txtlogout);
         txtchangepassword = findViewById(R.id.txtchangepassword);
         map = findViewById(R.id.map);
         txteditprofile = findViewById(R.id.txteditprofile);
@@ -84,6 +87,15 @@ public class TrangCaNhan extends AppCompatActivity{
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +120,24 @@ public class TrangCaNhan extends AppCompatActivity{
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        txtchangepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iQuenPass = new Intent(getApplicationContext(), QuenMatKhau.class);
+                startActivity(iQuenPass);
+                finish();
+            }
+        });
+
+        txteditprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iProfile = new Intent(getApplicationContext(), EditProfile.class);
+                startActivity(iProfile);
+            }
+        });
+
+        txtlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
@@ -117,7 +146,6 @@ public class TrangCaNhan extends AppCompatActivity{
                 finish();
             }
         });
-
-
     }
+
 }

@@ -70,7 +70,7 @@ public class DatabaseUser {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    if(dataSnapshot.child("email").getValue(String.class).equalsIgnoreCase(item.getEmail())){
+                    if(dataSnapshot.child("email").getValue(String.class)!=null && dataSnapshot.child("email").getValue(String.class).equalsIgnoreCase(item.getEmail())){
                         key=dataSnapshot.getKey();
                         mRef.child(key).setValue(item);
                         Toast.makeText(context, "Update Thành Công", Toast.LENGTH_SHORT).show();

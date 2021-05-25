@@ -14,9 +14,29 @@
         android:orientation="vertical"
         android:padding="30dp">
 
-        <TextView
-            style="@style/viewParent.headerText"
-            android:text="@string/caidat" />
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/viewParent.headerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="@string/caidat"
+                android:layout_marginTop="2.7dp"/>
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="0dp"
+                android:src="@drawable/ic_arrow_back_black1_24dp" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/edtEditProfile"

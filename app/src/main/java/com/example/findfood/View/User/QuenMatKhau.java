@@ -1,8 +1,11 @@
 package com.example.findfood.View.User;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -18,10 +21,11 @@ import com.google.firebase.auth.FirebaseAuth;
 public class QuenMatKhau extends AppCompatActivity implements View.OnClickListener {
 
     EditText EmailKhoiPhuc;
-    Button btnKhoiPhuc;
+    Button btnKhoiPhuc, btnQuayLai;
 
     FirebaseAuth firebaseAuth;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +56,8 @@ public class QuenMatKhau extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             Toast.makeText(QuenMatKhau.this,getString(R.string.thogbaoguiemailkhoiphucthanhcong),Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(QuenMatKhau.this, TrangCaNhan.class));
+                            finish();
                         }
                     });
                 if (checkEmail) {
