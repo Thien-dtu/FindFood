@@ -62,20 +62,13 @@ public class MainActivity extends AppCompatActivity {
     DatabaseFood databaseFood;
     RecyclerView rcvhome,rcvmonan;
 
+
     FirebaseStorage storage;
     StorageReference storageReference;
     CircleImageView anhdaidien;
     DatabaseUser databaseUser;
     FirebaseUser firebaseUser;
     String anh;
-
-
-
-//    RecyclerView recyclerView,recyclerView1;
-//    ArrayList<MainModel> mainModels;
-//    MainAdapter mainAdapter;
-//    ArrayList<MainModel1> mainModel1s;
-//    MainAdapter1 mainAdapter1;
     public static String emailuser = "";
 
 

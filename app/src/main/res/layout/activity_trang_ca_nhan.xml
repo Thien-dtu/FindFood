@@ -140,6 +140,7 @@
 
 
         <TextView
+            android:id="@+id/txtVersion"
             style="@style/viewParent.headerText.settingsMiniTitle"
             android:gravity="center_horizontal"
             android:text="App ver 2.0.1"

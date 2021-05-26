@@ -13,10 +13,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.findfood.CallBack.UserCallBack;
+import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.R;
+import com.example.findfood.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.ArrayList;
 
 public class QuenMatKhau extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +31,10 @@ public class QuenMatKhau extends AppCompatActivity implements View.OnClickListen
     Button btnKhoiPhuc, btnQuayLai;
 
     FirebaseAuth firebaseAuth;
+    DatabaseReference mRef;
+    DatabaseUser databaseUser;
+    FirebaseUser firebaseUser;
+    String mail;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -34,11 +45,13 @@ public class QuenMatKhau extends AppCompatActivity implements View.OnClickListen
         /*-------------------- Gán giá trị --------------------*/
         EmailKhoiPhuc = findViewById(R.id.EmailKhoiPhuc);
         btnKhoiPhuc = findViewById(R.id.btnKhoiPhuc);
+        btnQuayLai = findViewById(R.id.btnQuayLai);
         /*-------------------- END gán giá trị --------------------*/
 
-        firebaseAuth =FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         btnKhoiPhuc.setOnClickListener(this);
+        btnQuayLai.setOnClickListener(this);
     }
 
     private boolean CheckEmail(String email) {
@@ -52,12 +65,31 @@ public class QuenMatKhau extends AppCompatActivity implements View.OnClickListen
             case R.id.btnKhoiPhuc:
                 String email = EmailKhoiPhuc.getText().toString().trim();
                 boolean checkEmail = CheckEmail(email);
+                databaseUser = new DatabaseUser(getApplicationContext());
+                databaseUser.getAll(new UserCallBack() {
+                    @Override
+                    public void onSuccess(ArrayList<User> lists) {
+                        for (int i = 0; i < lists.size(); i++) {
+                            if (lists.get(i).getToken()!=null && lists.get(i).getToken().equalsIgnoreCase(firebaseUser.getUid())) {
+                                mail = lists.get(i).getEmail();
+                                EmailKhoiPhuc.setText(mail);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(String message) {
+
+                    }
+                });
                     firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(QuenMatKhau.this,getString(R.string.thogbaoguiemailkhoiphucthanhcong),Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(QuenMatKhau.this, TrangCaNhan.class));
-                            finish();
+                            if (task.isSuccessful()) {
+                                Toast.makeText(QuenMatKhau.this, getString(R.string.thogbaoguiemailkhoiphucthanhcong), Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(QuenMatKhau.this, TrangCaNhan.class));
+                                finish();
+                            }
                         }
                     });
                 if (checkEmail) {
@@ -65,6 +97,10 @@ public class QuenMatKhau extends AppCompatActivity implements View.OnClickListen
                 }else {
                     Toast.makeText(QuenMatKhau.this,getString(R.string.thongbaokhongdungdinhdangmatkhau),Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.btnQuayLai:
+                startActivity(new Intent(QuenMatKhau.this, TrangCaNhan.class));
+                finish();
                 break;
         }
     }

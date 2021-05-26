@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +43,7 @@ public class TrangCaNhan extends AppCompatActivity {
     private Switch darkModeSwitch;
     RelativeLayout edtEditProfile;
     ImageView profileCircleImageView;
-    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword,map;
+    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword,map,txtVersion;
     DatabaseUser databaseUser;
     FirebaseUser firebaseUser;
 
@@ -54,6 +56,7 @@ public class TrangCaNhan extends AppCompatActivity {
         setContentView(R.layout.activity_trang_ca_nhan);
 
         back = findViewById(R.id.back);
+        txtVersion = findViewById(R.id.txtVersion);
         edtEditProfile = findViewById(R.id.edtEditProfile);
         profileCircleImageView = findViewById(R.id.profileCircleImageView);
         usernameTextView = findViewById(R.id.usernameTextView);
@@ -146,6 +149,14 @@ public class TrangCaNhan extends AppCompatActivity {
                 finish();
             }
         });
+
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(),0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        txtVersion.setText( getString(R.string.phienban) + " " +packageInfo.versionName);
     }
 
 }

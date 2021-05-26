@@ -48,6 +48,7 @@
                 android:theme="@style/editSearch"
                 android:layout_width="wrap_content"
                 android:hint="Tìm nhà hàng , món ăn bạn thích"
+                android:textSize="16sp"
                 android:fontFamily="@font/poppinregular"
                 android:layout_marginLeft="10dp"
                 android:imeOptions="actionSearch"
