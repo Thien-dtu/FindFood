@@ -25,6 +25,7 @@ import com.example.findfood.EditProfile;
 import com.example.findfood.MainActivity;
 import com.example.findfood.MessegerActivity;
 import com.example.findfood.R;
+import com.example.findfood.View.MapActivity;
 import com.example.findfood.model.User;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
@@ -102,8 +103,7 @@ public class TrangCaNhan extends AppCompatActivity {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(), MapActivity.class));
-                Toast.makeText(getApplicationContext(), "Đang phát triển, dự kiến khả dụng : CDIO 4", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), MapActivity.class));
             }
         });
 

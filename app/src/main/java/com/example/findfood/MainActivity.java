@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     String anh;
     public static String emailuser = "";
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -208,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        sharedPreferences = getApplicationContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
 
         adapter = new AdapterViewPayer(getApplicationContext());
         sliderView.setSliderAdapter(adapter);

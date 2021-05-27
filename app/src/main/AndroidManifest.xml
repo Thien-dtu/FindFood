@@ -18,7 +18,13 @@
         android:roundIcon="@mipmap/ic_logo1"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindFood">
-        <activity android:name=".GiaoDichActivity"></activity>
+        <activity android:name=".View.MapActivity"></activity>
+
+        <meta-data
+            android:name="com.google.geo.API_KEY"
+            android:value="@string/map_key" />
+
+        <activity android:name=".GiaoDichActivity" />
         <activity android:name=".EditProfile" />
         <activity android:name=".FoodProductActivity" />
         <activity android:name=".MessegerActivity" />

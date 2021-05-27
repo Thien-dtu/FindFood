@@ -105,8 +105,8 @@ public class begin extends AppCompatActivity implements GoogleApiClient.Connecti
         @SuppressLint("MissingPermission") Location viTriHienTai = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
         if (viTriHienTai != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putFloat("viDo", (float) viTriHienTai.getLatitude());
-            editor.putFloat("kinhDo", (float) viTriHienTai.getLongitude());
+            editor.putString("viDo", String.valueOf( viTriHienTai.getLatitude()));
+            editor.putString("kinhDo", String.valueOf( viTriHienTai.getLongitude()));
         }
 
         try {
