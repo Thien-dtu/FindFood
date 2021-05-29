@@ -25,6 +25,9 @@ import com.example.findfood.EditProfile;
 import com.example.findfood.MainActivity;
 import com.example.findfood.MessegerActivity;
 import com.example.findfood.R;
+import com.example.findfood.View.CartActivity;
+import com.example.findfood.View.ChatActivity;
+import com.example.findfood.View.FavoriteActivity;
 import com.example.findfood.View.MapActivity;
 import com.example.findfood.model.User;
 import com.facebook.login.LoginManager;
@@ -44,7 +47,8 @@ public class TrangCaNhan extends AppCompatActivity {
     private Switch darkModeSwitch;
     RelativeLayout edtEditProfile;
     ImageView profileCircleImageView;
-    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword,map,txtVersion;
+    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword;
+    TextView txtYeuThich,map,txtVersion,txtMesenger,txtDonHang;
     DatabaseUser databaseUser;
     FirebaseUser firebaseUser;
 
@@ -59,6 +63,9 @@ public class TrangCaNhan extends AppCompatActivity {
         back = findViewById(R.id.back);
         txtVersion = findViewById(R.id.txtVersion);
         edtEditProfile = findViewById(R.id.edtEditProfile);
+        txtMesenger = findViewById(R.id.txtMesenger);
+        txtDonHang = findViewById(R.id.txtDonHang);
+        txtYeuThich = findViewById(R.id.txtYeuThich);
         profileCircleImageView = findViewById(R.id.profileCircleImageView);
         usernameTextView = findViewById(R.id.usernameTextView);
         email= findViewById(R.id.email);
@@ -137,6 +144,28 @@ public class TrangCaNhan extends AppCompatActivity {
             public void onClick(View v) {
                 Intent iProfile = new Intent(getApplicationContext(), EditProfile.class);
                 startActivity(iProfile);
+            }
+        });
+
+        txtMesenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iMess = new Intent(getApplicationContext(), ChatActivity.class);
+                startActivity(iMess);
+            }
+        });
+        txtDonHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iDonHang = new Intent(getApplicationContext(), CartActivity.class);
+                startActivity(iDonHang);
+            }
+        });
+        txtYeuThich.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iYeuThich = new Intent(getApplicationContext(), FavoriteActivity.class);
+                startActivity(iYeuThich);
             }
         });
 

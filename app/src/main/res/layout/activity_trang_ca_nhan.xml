@@ -109,8 +109,15 @@
             android:text="Nhắn Tin" />
 
         <TextView
+            android:id="@+id/txtYeuThich"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_favorite"
+            android:text="Món Ăn Ưa Thích" />
+
+        <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
-            android:text="Notifications" />
+            android:text="Thông báo" />
 
         <Switch
             style="@style/settingsText"
@@ -127,6 +134,11 @@
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/icons8_order_history_30px"
             android:text="Lịch Sử Đơn Hàng" />
+        <TextView
+            android:id="@+id/txtDonHang"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/icon_cart"
+            android:text="Đơn Hàng" />
         <TextView
             android:id="@+id/map"
             style="@style/viewParent.headerText.settingsTextIcon"

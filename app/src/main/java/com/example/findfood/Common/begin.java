@@ -2,6 +2,7 @@ package com.example.findfood.Common;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,15 +10,19 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SharedMemory;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import android.view.WindowManager;
@@ -47,6 +52,7 @@ public class begin extends AppCompatActivity implements GoogleApiClient.Connecti
     GoogleApiClient googleApiClient;
     public static final int REQUEST_PERMISSION_LOCATION = 1;
     SharedPreferences sharedPreferences;
+    LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

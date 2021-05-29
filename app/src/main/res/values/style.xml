@@ -49,6 +49,10 @@
         <item name="colorOnSecondary">@color/black</item>
     </style>
 
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="viewParent.headerText">
         <item name="android:textColor">#020000</item>
         <item name="android:textSize">22sp</item>
