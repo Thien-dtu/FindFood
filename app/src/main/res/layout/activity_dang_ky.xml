@@ -95,7 +95,7 @@
 
             <RadioButton
                 android:id="@+id/rdbNam"
-                android:layout_width="153dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nam"
                 android:textSize="16sp"
@@ -103,10 +103,18 @@
 
             <RadioButton
                 android:id="@+id/rdbNu"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nữ"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginLeft="15dp" />
+            <RadioButton
+                android:id="@+id/rdbKhac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Khác"
+                android:textSize="16sp"
+                android:layout_marginLeft="15dp"/>
         </RadioGroup>
 
         <LinearLayout

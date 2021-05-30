@@ -19,6 +19,8 @@
         android:roundIcon="@mipmap/ic_logo1"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindFood">
+        <activity android:name=".View.ThayDoiMatKhauActivity"></activity>
+        <activity android:name=".View.HistoryActivity" />
         <activity android:name=".View.FavoriteActivity" />
         <activity android:name=".View.CartActivity" />
         <activity android:name=".View.ChatActivity" />

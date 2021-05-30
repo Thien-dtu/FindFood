@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -17,6 +20,7 @@ import com.example.findfood.Databases.DatabaseStore;
 import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.HelperClasses.CartAdapter;
 import com.example.findfood.R;
+import com.example.findfood.View.User.TrangCaNhan;
 import com.example.findfood.local.LocalStorage;
 import com.example.findfood.model.HDCT;
 import com.example.findfood.model.Order;
@@ -38,6 +42,7 @@ public class CartActivity extends AppCompatActivity {
     LocalStorage localStorage;
     Gson gson;
     TextView titletoolbar,txtaddress,txttientong;
+    ImageView back;
     RelativeLayout linearbackground;
     DatabaseHDCT databaseHDCT;
     DatabaseUser databaseUser;
@@ -53,6 +58,7 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
+        back = findViewById(R.id.back);
         rcvcart = findViewById(R.id.rcvcart);
         localStorage = new LocalStorage(getApplicationContext());
 
@@ -74,6 +80,13 @@ public class CartActivity extends AppCompatActivity {
             linearbackground.setBackgroundResource(R.drawable.empty_cart);
         }
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), TrangCaNhan.class);
+                startActivity(i);
+            }
+        });
 
     }
     public ArrayList<Order> getCartList () {

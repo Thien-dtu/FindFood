@@ -14,6 +14,7 @@
     <color name="colorPrimaryTransparent">#b84e277a</color>
     <color name="grey_200">#eeeeee</color>
     <color name="xam">#BEBEC7</color>
+    <color name="mau_trong_suot">#00000000</color>
 
     <!--Color for button next :)-->
     <color name="gradient_startColor" tools:ignore="MissingDefaultResource">#4c84ff</color>

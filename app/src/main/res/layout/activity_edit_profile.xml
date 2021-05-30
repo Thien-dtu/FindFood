@@ -48,8 +48,8 @@
                 app:civ_border_color="#fff"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/avatar"
-                android:layout_marginTop="120dp"
-                android:layout_marginBottom="60dp"/>
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"/>
 
             <EditText
                 android:layout_width="300dp"
@@ -100,8 +100,88 @@
                 android:paddingTop="10dp"
                 android:layout_gravity="center"
                 android:paddingBottom="10dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/boggocedt"
                 android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="235dp"
+                    android:hint="Nhập Ngày Tháng Năm Sinh"
+                    android:id="@+id/edtNgaySinh"
+                    android:theme="@style/foating"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingBottom="10dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/boggocedt"
+                    android:layout_height="wrap_content"/>
+
+                <ImageButton
+                    android:id="@+id/button_date"
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_calendar_foreground" />
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/RGroup"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giới tính"
+                    android:textSize="20sp"/>
+
+                <RadioButton
+                    android:id="@+id/rdbNam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nam"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="13dp"/>
+
+                <RadioButton
+                    android:id="@+id/rdbNu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nữ"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="13dp" />
+                <RadioButton
+                    android:id="@+id/rdbKhac"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khác"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="13dp"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/txtGioiTinh"
+                android:paddingLeft="20dp"
+                android:theme="@style/foating"
+                android:paddingTop="10dp"
+                android:layout_gravity="center"
+                android:paddingBottom="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/boggocedt"
+                android:layout_height="wrap_content"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="40dp"

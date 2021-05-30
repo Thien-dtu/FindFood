@@ -33,7 +33,7 @@ import java.util.Date;
 public class DangKyActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
     public EditText edtHoTen,edtEmail,edtPass,edtConfPass,edtDate,edtPhone;
-    RadioButton rdbNam, rdbNu;
+    RadioButton rdbNam, rdbNu, rdbKhac;
     String gioitinh = "";
     Button btnDangKy;
     TextView btnDangNhap;
@@ -60,6 +60,7 @@ public class DangKyActivity extends AppCompatActivity {
         edtPhone = findViewById(R.id.edtPhone);
         rdbNam = findViewById(R.id.rdbNam);
         rdbNu = findViewById(R.id.rdbNu);
+        rdbKhac = findViewById(R.id.rdbKhac);
         btnDangKy= findViewById(R.id.btnOTP);
         btnDangNhap   = findViewById(R.id.btnDangNhap);
 
@@ -139,6 +140,9 @@ public class DangKyActivity extends AppCompatActivity {
                 }
                 if (rdbNu.isChecked()){
                     gioitinh = "Nữ";
+                }
+                if (rdbKhac.isChecked()) {
+                    gioitinh = "Khác";
                 }
 
                 progressBar.setVisibility(View.VISIBLE);

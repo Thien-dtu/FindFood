@@ -1,6 +1,5 @@
 package com.example.findfood.View.User;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,9 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -23,21 +20,18 @@ import com.example.findfood.DangNhapActivity;
 import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.EditProfile;
 import com.example.findfood.MainActivity;
-import com.example.findfood.MessegerActivity;
 import com.example.findfood.R;
 import com.example.findfood.View.CartActivity;
 import com.example.findfood.View.ChatActivity;
 import com.example.findfood.View.FavoriteActivity;
+import com.example.findfood.View.HistoryActivity;
 import com.example.findfood.View.MapActivity;
+import com.example.findfood.View.ThayDoiMatKhauActivity;
 import com.example.findfood.model.User;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -133,7 +127,7 @@ public class TrangCaNhan extends AppCompatActivity {
         txtchangepassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iQuenPass = new Intent(getApplicationContext(), QuenMatKhau.class);
+                Intent iQuenPass = new Intent(getApplicationContext(), ThayDoiMatKhauActivity.class);
                 startActivity(iQuenPass);
                 finish();
             }
@@ -166,6 +160,14 @@ public class TrangCaNhan extends AppCompatActivity {
             public void onClick(View v) {
                 Intent iYeuThich = new Intent(getApplicationContext(), FavoriteActivity.class);
                 startActivity(iYeuThich);
+            }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iLichSu = new Intent(getApplicationContext(), HistoryActivity.class);
+                startActivity(iLichSu);
             }
         });
 

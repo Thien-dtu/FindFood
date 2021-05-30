@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.findfood.CallBack.UserCallBack;
@@ -47,7 +49,10 @@ import static android.app.Activity.RESULT_OK;
 public class EditProfile extends AppCompatActivity {
     public static ImageView back;
     DatabaseUser databaseUser;
-    EditText edtname, edtphone, edtmail, edtaddress;
+    EditText edtname, edtphone, edtmail, edtaddress,edtNgaySinh;
+    TextView txtGioiTinh;
+    RadioButton rdbNam, rdbNu, rdbKhac;
+    RadioGroup RGroup;
     Button btnupdateprofile;
     CircleImageView imgprofile;
     private Uri filePath;
@@ -56,8 +61,14 @@ public class EditProfile extends AppCompatActivity {
     StorageReference storageReference;
     String pass;
 
+    public int Year;
+    public int Month;
+    public int dayOfMonth;
+    public int yearCurrent;
+    public ImageButton buttonDate;
+
     FirebaseUser firebaseUser;
-    String mail, name, phone, diachi, anh;
+    String mail, name, phone, diachi, anh, ngaysinh, gioitinh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +81,22 @@ public class EditProfile extends AppCompatActivity {
         edtphone = findViewById(R.id.profilephone);
         edtmail = findViewById(R.id.profilemail);
         edtaddress = findViewById(R.id.profileaddress);
+        edtNgaySinh = findViewById(R.id.edtNgaySinh);
+        buttonDate = findViewById(R.id.button_date);
+        RGroup = findViewById(R.id.RGroup);
+        rdbNam = findViewById(R.id.rdbNam);
+        rdbNu = findViewById(R.id.rdbNu);
+        rdbKhac = findViewById(R.id.rdbKhac);
+        txtGioiTinh = findViewById(R.id.txtGioiTinh);
         imgprofile = findViewById(R.id.imgProfile);
         btnupdateprofile = findViewById(R.id.updateprofile);
+
+        final Calendar c = Calendar.getInstance();
+        this.Year = c.get(Calendar.YEAR);
+        this.yearCurrent = c.get(Calendar.YEAR);
+        this.Month = c.get(Calendar.MONTH);
+        this.dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         databaseUser = new DatabaseUser(getApplicationContext());
@@ -86,6 +111,8 @@ public class EditProfile extends AppCompatActivity {
                         phone = lists.get(i).getPhone();
                         pass = lists.get(i).getPassword();
                         anh = lists.get(i).getImage();
+                        ngaysinh = lists.get(i).getNgaysinh();
+                        gioitinh = lists.get(i).getGioitinh();
                     }
                 }
                 edtaddress.setText(diachi);
@@ -97,6 +124,9 @@ public class EditProfile extends AppCompatActivity {
                 }else if (anh !=null){
                     Picasso.get().load(anh).into(imgprofile);
                 }
+                edtNgaySinh.setText(ngaysinh);
+                txtGioiTinh.setText(gioitinh);
+
             }
 
             @Override
@@ -111,6 +141,28 @@ public class EditProfile extends AppCompatActivity {
                 SelectImage();
             }
         });
+
+
+        //Hàm Date
+        buttonDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonSelectDate();
+            }
+        });
+        RGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (rdbNam.isChecked()) {
+                    txtGioiTinh.setText("Nam");
+                }else if (rdbNu.isChecked()) {
+                    txtGioiTinh.setText("Nữ");
+                } else if (rdbKhac.isChecked()) {
+                    txtGioiTinh.setText("Khác");
+                }
+            }
+        });
+
         btnupdateprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +171,9 @@ public class EditProfile extends AppCompatActivity {
                     String phone = edtphone.getText().toString().trim();
                     String ten = edtname.getText().toString().trim();
                     String diachi = edtaddress.getText().toString().trim();
-                    if (email.isEmpty() || phone.isEmpty() || ten.isEmpty() || diachi.isEmpty()) {
+                    String ngaysinh = edtNgaySinh.getText().toString().trim();
+                    String gioitinh = txtGioiTinh.getText().toString().trim();
+                    if (email.isEmpty() || phone.isEmpty() || ten.isEmpty() || diachi.isEmpty() || ngaysinh.isEmpty() || gioitinh.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ các trường", Toast.LENGTH_SHORT).show();
                     } else if (!email.matches("^[a-zA-Z][a-z0-9_\\.]{4,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
                         Toast.makeText(getApplicationContext(), "Email Không Hợp Lệ", Toast.LENGTH_SHORT).show();
@@ -128,13 +182,14 @@ public class EditProfile extends AppCompatActivity {
                     } else {
                         change();
                     }
-                } else {
+                } else  {
                     String email = edtmail.getText().toString().trim();
                     String phone = edtphone.getText().toString().trim();
                     String ten = edtname.getText().toString().trim();
                     String diachi = edtaddress.getText().toString().trim();
-
-                    if (email.isEmpty() || phone.isEmpty() || ten.isEmpty() || diachi.isEmpty()) {
+                    String ngaysinh = edtNgaySinh.getText().toString().trim();
+                    String gioitinh = txtGioiTinh.getText().toString().trim();
+                    if (email.isEmpty() || phone.isEmpty() || ten.isEmpty() || diachi.isEmpty() || ngaysinh.isEmpty() || gioitinh.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ các trường", Toast.LENGTH_SHORT).show();
                     } else if (!email.matches("^[a-zA-Z][a-z0-9_\\.]{4,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
                         Toast.makeText(getApplicationContext(), "Email Không Hợp Lệ", Toast.LENGTH_SHORT).show();
@@ -148,6 +203,8 @@ public class EditProfile extends AppCompatActivity {
                         store.setDiachi(edtaddress.getText().toString());
                         store.setPassword(pass);
                         store.setDiachi(edtaddress.getText().toString());
+                        store.setNgaysinh(edtNgaySinh.getText().toString());
+                        store.setGioitinh(txtGioiTinh.getText().toString());
                         store.setImage(anh);
                         store.setToken(firebaseUser.getUid());
                         databaseUser = new DatabaseUser(getApplicationContext());
@@ -172,6 +229,28 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
+    private void buttonSelectDate() {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year,
+                                  int monthOfYear, int dayOfMonth) {
+
+                edtNgaySinh.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+
+                Year = year;
+                Month = monthOfYear;
+                dayOfMonth = dayOfMonth;
+                if (Year > yearCurrent){
+                    Toast.makeText(getApplicationContext(), "Sai định dạng ngày/tháng/năm", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+        DatePickerDialog datePickerDialog = null;
+        datePickerDialog = new DatePickerDialog(this, dateSetListener, Year, Month, dayOfMonth);
+        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+        datePickerDialog.show();
+    }
+
     private void change() {
 
         final StorageReference imageFolder = storageReference.child("Users/" + UUID.randomUUID().toString());
@@ -186,6 +265,8 @@ public class EditProfile extends AppCompatActivity {
                         store.setName(edtname.getText().toString());
                         store.setPhone(edtphone.getText().toString());
                         store.setDiachi(edtaddress.getText().toString());
+                        store.setNgaysinh(edtNgaySinh.getText().toString());
+                        store.setGioitinh(txtGioiTinh.getText().toString());
                         store.setImage(uri.toString());
                         store.setPassword(pass);
                         store.setToken(firebaseUser.getUid());
