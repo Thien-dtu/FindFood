@@ -74,7 +74,7 @@ public class DatabaseCategories {
                     if(dataSnapshot.child("matheloai").getValue(String.class).equalsIgnoreCase(item.getMatheloai())){
                         key=dataSnapshot.getKey();
                         mRef.child(key).setValue(item);
-                        Toast.makeText(context, "Update Thành Công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -98,7 +98,7 @@ public class DatabaseCategories {
                         mRef.child(key).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(context, "Delete Thành Công", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Xoá Thành Công", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
