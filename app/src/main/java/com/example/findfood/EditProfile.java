@@ -135,6 +135,8 @@ public class EditProfile extends AppCompatActivity {
             }
         });
 
+        /*Hàm thêm ảnh*/
+
         imgprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,6 +144,7 @@ public class EditProfile extends AppCompatActivity {
             }
         });
 
+        /*End Hàm thêm ảnh*/
 
         //Hàm Date
         buttonDate.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +170,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (filePath != null) {
-                    String email = edtmail.getText().toString().trim();
+                    String email = edtmail.getText().toString().trim(); // buiducthien
                     String phone = edtphone.getText().toString().trim();
                     String ten = edtname.getText().toString().trim();
                     String diachi = edtaddress.getText().toString().trim();

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.findfood">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -19,7 +21,8 @@
         android:roundIcon="@mipmap/ic_logo1"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindFood">
-        <activity android:name=".View.ThayDoiMatKhauActivity"></activity>
+        <activity android:name=".View.SearchActivity"></activity>
+        <activity android:name=".View.ThayDoiMatKhauActivity" />
         <activity android:name=".View.HistoryActivity" />
         <activity android:name=".View.FavoriteActivity" />
         <activity android:name=".View.CartActivity" />
@@ -38,14 +41,14 @@
         <activity android:name=".View.HomePage" />
         <activity android:name=".View.User.QuenMatKhau" />
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+<!--        <meta-data-->
+<!--            android:name="com.facebook.sdk.ApplicationId"-->
+<!--            android:value="@string/facebook_app_id" />-->
 
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+<!--        <activity-->
+<!--            android:name="com.facebook.FacebookActivity"-->
+<!--            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"-->
+<!--            android:label="@string/app_name" />-->
         <!--
 <activity android:name="com.facebook.CustomTabActivity"
             android:exported="true">

@@ -33,6 +33,7 @@ import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.HelperClasses.CartAdapter;
 import com.example.findfood.Notification.DataHoaDon;
 import com.example.findfood.Notification.SenderHoaDon;
+import com.example.findfood.View.CartActivity;
 import com.example.findfood.local.LocalStorage;
 import com.example.findfood.model.HDCT;
 import com.example.findfood.model.Order;
@@ -156,6 +157,8 @@ public class ThanhToanActivity extends AppCompatActivity {
                     linearbackground.setBackgroundResource(R.drawable.empty_cart);
                     scrollView.setVisibility(View.GONE);
                     linearLayout.setVisibility(View.GONE);
+                    Intent intent = new Intent(getApplicationContext(), CartActivity.class);
+                    startActivity(intent);
                 }
             });
         }else {

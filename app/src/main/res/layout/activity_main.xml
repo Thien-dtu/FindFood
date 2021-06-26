@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <TextView
                 android:theme="@style/editSearch"
                 android:layout_width="wrap_content"
                 android:hint="Tìm nhà hàng , món ăn bạn thích"

@@ -20,7 +20,7 @@
             android:textColor="@color/cam"
             android:textStyle="bold"
             android:layout_marginTop="5dp"
-            android:text="Lịch Sử Đơn Hàng"
+            android:text="Đơn Hàng"
             />
 
         <ImageView
