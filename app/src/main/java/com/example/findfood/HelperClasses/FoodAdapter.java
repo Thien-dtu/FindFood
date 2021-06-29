@@ -1,6 +1,8 @@
 package com.example.findfood.HelperClasses;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -45,6 +47,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
     ArrayList<Food> categoryList;
     Context context;
     String pLikes;
+    Activity activity;
     DatabaseReference databaseReference,fvrtref,fvrt_listRef;
     FirebaseUser user;
     DatabaseFood databaseFood;
@@ -54,6 +57,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
     public FoodAdapter(ArrayList<Food> categoryList, Context context) {
         this.categoryList = categoryList;
         this.context = context;
+        this.activity = activity;
     }
 
 
