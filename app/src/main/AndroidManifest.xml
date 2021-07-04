@@ -36,6 +36,7 @@
         <activity android:name=".GiaoDichActivity" />
         <activity android:name=".EditProfile" />
         <activity android:name=".FoodProductActivity" />
+        <activity android:name=".FoodProfileActivity" />
         <activity android:name=".MessegerActivity" />
         <activity android:name=".ThanhToanActivity" />
         <activity android:name=".View.HomePage" />

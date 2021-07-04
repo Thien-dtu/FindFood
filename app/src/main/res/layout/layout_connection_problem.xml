@@ -48,7 +48,6 @@
             android:orientation="vertical"
             >
             <ImageView
-
                 android:layout_width="20dp"
                 android:src="@drawable/icons8_plus_math_26px_1"
                 android:layout_height="20dp"/>

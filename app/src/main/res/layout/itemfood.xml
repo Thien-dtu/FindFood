@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardview1"
+    android:id="@+id/cardview_Nhan"
     android:layout_width="160dp"
     android:layout_height="300dp"
     android:layout_marginLeft="10dp"
@@ -12,11 +13,13 @@
     app:cardElevation="8dp">
 
     <LinearLayout
+        android:id="@+id/khung"
         android:layout_width="150dp"
         android:layout_height="280dp"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/vien"
             android:layout_width="150dp"
             android:layout_height="170dp"
             android:background="@color/white">

@@ -101,12 +101,15 @@ public class TrangCaNhan extends AppCompatActivity {
             }
         });
 
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MapActivity.class));
-            }
-        });
+//        map.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(), MapActivity.class));
+//            }
+//        });
+        map.setVisibility(View.GONE);
+
+        darkModeSwitch.setVisibility(View.GONE);
 
         edtEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override

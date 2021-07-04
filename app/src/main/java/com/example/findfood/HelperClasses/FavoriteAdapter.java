@@ -72,7 +72,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MyView
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, FoodProfileActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                 intent.putExtra("img", categories.getImage());
                 intent.putExtra("gia", decimalFormat.format(categories.getGia())+"\t VNĐ");
                 intent.putExtra("namefood", categories.getNamefood());
@@ -85,6 +85,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MyView
                 intent.putExtra("mota",categories.getMota());
                 intent.putExtra("idfoodcheck",categories.getIdfood()+"");
                 intent.putExtra("tokenstore",categories.getTokenstore());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(intent);
             }
         });

@@ -97,6 +97,8 @@ public class EditProfile extends AppCompatActivity {
         this.Month = c.get(Calendar.MONTH);
         this.dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
 
+        rdbNam.isChecked();
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         databaseUser = new DatabaseUser(getApplicationContext());
@@ -126,6 +128,13 @@ public class EditProfile extends AppCompatActivity {
                 }
                 edtNgaySinh.setText(ngaysinh);
                 txtGioiTinh.setText(gioitinh);
+                if (gioitinh == "Nam"){
+                    rdbNam.isChecked();
+                } else if (gioitinh == "Nữ") {
+                    rdbNu.isChecked();
+                } else {
+                    rdbKhac.isChecked();
+                }
 
             }
 

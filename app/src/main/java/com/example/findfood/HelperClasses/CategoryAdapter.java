@@ -38,6 +38,28 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         this.context = context;
     }
 
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageView;
+        TextView title;
+        ProgressBar progressBar;
+        CardView cardView,cardView1,card_view4;
+        LinearLayout line1;
+
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            imageView = itemView.findViewById(R.id.category_image);
+            title = itemView.findViewById(R.id.category_title);
+            progressBar = itemView.findViewById(R.id.progressbar1);
+            cardView = itemView.findViewById(R.id.card_view);
+            cardView1 = itemView.findViewById(R.id.card_view1);
+            card_view4 = itemView.findViewById(R.id.card_view4);
+            line1 = itemView.findViewById(R.id.line1);
+
+        }
+    }
+
 
     @NonNull
     @Override
@@ -82,6 +104,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
                 holder.title.setTextColor(Color.WHITE);
                 Intent i = new Intent(context, FoodProductActivity.class);
                 i.putExtra("matl",categories.getMatheloai());
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(i);
             }
@@ -95,25 +118,4 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
-        TextView title;
-        ProgressBar progressBar;
-        CardView cardView,cardView1,card_view4;
-        LinearLayout line1;
-
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            imageView = itemView.findViewById(R.id.category_image);
-            title = itemView.findViewById(R.id.category_title);
-            progressBar = itemView.findViewById(R.id.progressbar1);
-            cardView = itemView.findViewById(R.id.card_view);
-            cardView1 = itemView.findViewById(R.id.card_view1);
-            card_view4 = itemView.findViewById(R.id.card_view4);
-            line1 = itemView.findViewById(R.id.line1);
-
-        }
-    }
 }

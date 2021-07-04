@@ -43,7 +43,6 @@
                 android:text="Food"
                 android:textSize="18dp"
                 android:layout_marginRight="10dp"
-                android:fontFamily="@font/utmamerikasans"
                 android:textStyle="bold" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

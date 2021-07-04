@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.findfood.CallBack.FoodCallBack;
 import com.example.findfood.Databases.DatabaseFood;
@@ -19,6 +21,7 @@ public class FoodProductActivity extends AppCompatActivity {
     DatabaseFood databaseFood;
     FoodAdapter foodAdapter;
     RecyclerView rcvfood;
+    ImageView backDSMA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class FoodProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_product);
 
         rcvfood = findViewById(R.id.rcvfood);
+        backDSMA = findViewById(R.id.backDSMA);
         Intent getdata = getIntent();
         String matl = getdata.getStringExtra("matl");
         databaseFood = new DatabaseFood(FoodProductActivity.this);
@@ -51,6 +55,14 @@ public class FoodProductActivity extends AppCompatActivity {
             @Override
             public void onError(String message) {
 
+            }
+        });
+
+        backDSMA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(i);
             }
         });
 

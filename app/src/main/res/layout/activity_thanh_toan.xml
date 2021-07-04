@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearbackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearbackground"
-    tools:context=".ThanhToanActivity"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="5dp"
-        android:orientation="vertical">
+    tools:context=".ThanhToanActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#fff"
         android:layout_alignParentTop="true"
         android:elevation="10dp">
 
@@ -30,13 +24,13 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/billabong" />
     </androidx.appcompat.widget.Toolbar>
-
     <ScrollView
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/scrollView"
+        android:layout_above="@id/card_view"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -148,12 +142,15 @@
                     android:layout_toRightOf="@id/img"/>
             </RelativeLayout>
         </LinearLayout>
+
     </ScrollView>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:cardElevation="10dp"
-        android:id="@+id/card_view">
+        android:id="@+id/card_view"
+        android:layout_alignParentBottom="true"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -199,5 +196,4 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>

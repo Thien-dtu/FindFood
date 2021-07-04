@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,36 +43,57 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1> {
 
     ArrayList<Food> categoryList;
     Context context;
     String pLikes;
-    Activity activity;
     DatabaseReference databaseReference,fvrtref,fvrt_listRef;
     FirebaseUser user;
     DatabaseFood databaseFood;
     Food food1 = null;
     Boolean mProcessLike =false;
+    String Tag;
 
     public FoodAdapter(ArrayList<Food> categoryList, Context context) {
         this.categoryList = categoryList;
         this.context = context;
-        this.activity = activity;
+    }
+
+    public class MyViewHolder1 extends RecyclerView.ViewHolder {
+        ImageView imageView, likeBtn;
+        TextView title, txtdiachi, txtgia;
+        ProgressBar progressBar;
+        CardView cardView, cardView1, card_view4, vien, cardview_Nhan;
+        LinearLayout khung;
+
+        public MyViewHolder1(@NonNull View itemView) {
+            super(itemView);
+
+            imageView = itemView.findViewById(R.id.imgfood);
+            title = itemView.findViewById(R.id.txtnamefood);
+            progressBar = itemView.findViewById(R.id.progressbar);
+            txtdiachi = itemView.findViewById(R.id.txtdiachi);
+            txtgia = itemView.findViewById(R.id.txtgia);
+            khung = itemView.findViewById(R.id.khung);
+            vien = itemView.findViewById(R.id.vien);
+            likeBtn = itemView.findViewById(R.id.likeBtn);
+            cardview_Nhan = itemView.findViewById(R.id.cardview_Nhan);
+        }
     }
 
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public MyViewHolder1 onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View itemView;
         itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.itemfood, parent, false);
-        return new MyViewHolder(itemView);
+        return new MyViewHolder1(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder1 holder, final int position) {
         final DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         decimalFormat.applyPattern("#,###,###,###");
         Food categories = categoryList.get(position);
@@ -107,13 +129,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
                 fvrtref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
                         if (mProcessLike.equals(true)){
                             if (snapshot.child(key).hasChild(user.getUid())){
                                 fvrtref.child(key).child(user.getUid()).removeValue();
                                 fvrt_listRef.child(key).removeValue();
-                                Toast.makeText(context, "Removed from favourite", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Xoá Khỏi Danh Sách Yêu Thích", Toast.LENGTH_SHORT).show();
                                 mProcessLike = false;
                             }else {
                                 fvrtref.child(key).child(user.getUid()).setValue(true);
@@ -122,7 +142,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
                                 fvrt_listRef.child(key).setValue(favorite);
                                 mProcessLike = false;
 
-                                Toast.makeText(context, "Added to favourite", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Thêm Vào Danh Sách Yêu Thích", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -135,25 +155,30 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
             }
         });
 
-        holder.cardView1.setOnClickListener(new View.OnClickListener() {
+        holder.cardview_Nhan.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, FoodProfileActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("img", categories.getImage());
-                intent.putExtra("gia", decimalFormat.format(categories.getGia()) + "\t VNĐ");
-                intent.putExtra("namefood", categories.getNamefood());
-                intent.putExtra("idfood", "Id: " + categories.getIdfood());
-                intent.putExtra("idstore", categories.getIdstore());
-                intent.putExtra("diachi", categories.getDiachi());
-                intent.putExtra("sl", categories.getSoluong() + "");
-                intent.putExtra("matl", categories.getMatheloai());
-                intent.putExtra("status", categories.getStatus());
-                intent.putExtra("mota", categories.getMota());
-                intent.putExtra("tokenstore", categories.getTokenstore());
-                context.startActivity(intent);
+                Intent i = new Intent(context, FoodProfileActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                i.putExtra("img", categories.getImage());
+                i.putExtra("gia", decimalFormat.format(categories.getGia()) + "\t VNĐ");
+                i.putExtra("namefood", categories.getNamefood());
+                i.putExtra("idfood", "Id: " + categories.getIdfood());
+                i.putExtra("idstore", categories.getIdstore());
+                i.putExtra("diachi", categories.getDiachi());
+                i.putExtra("sl", categories.getSoluong() + "");
+                i.putExtra("matl", categories.getMatheloai());
+                i.putExtra("status", categories.getStatus());
+                i.putExtra("mota", categories.getMota());
+                i.putExtra("tokenstore", categories.getTokenstore());
+//                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
+                context.startActivity(i);
             }
         });
     }
@@ -164,28 +189,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
 
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView, likeBtn;
-        TextView title, txtdiachi, txtgia;
-        ProgressBar progressBar;
-        CardView cardView, cardView1, card_view4;
-        LinearLayout line1;
 
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            imageView = itemView.findViewById(R.id.imgfood);
-            title = itemView.findViewById(R.id.txtnamefood);
-            progressBar = itemView.findViewById(R.id.progressbar);
-            txtdiachi = itemView.findViewById(R.id.txtdiachi);
-            txtgia = itemView.findViewById(R.id.txtgia);
-            line1 = itemView.findViewById(R.id.line1);
-            likeBtn = itemView.findViewById(R.id.likeBtn);
-            cardView1 = itemView.findViewById(R.id.cardview1);
-        }
-    }
-
-    public void favouriteChecker(final String postkey, MyViewHolder holder) {
+    public void favouriteChecker(final String postkey, MyViewHolder1 holder) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
 

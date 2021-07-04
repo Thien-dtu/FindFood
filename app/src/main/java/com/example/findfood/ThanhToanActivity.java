@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,14 +30,29 @@ import com.example.findfood.Databases.DatabaseHDCT;
 import com.example.findfood.Databases.DatabaseStore;
 import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.HelperClasses.CartAdapter;
+import com.example.findfood.MainActivity;
 import com.example.findfood.Notification.DataHoaDon;
 import com.example.findfood.Notification.SenderHoaDon;
-import com.example.findfood.View.CartActivity;
+import com.example.findfood.R;
 import com.example.findfood.local.LocalStorage;
 import com.example.findfood.model.HDCT;
 import com.example.findfood.model.Order;
 import com.example.findfood.model.Token;
 import com.example.findfood.model.User;
+import com.example.findfood.HelperClasses.CartAdapter;
+import com.example.findfood.CallBack.UserCallBack;
+import com.example.findfood.Databases.DatabaseHDCT;
+import com.example.findfood.Databases.DatabaseStore;
+import com.example.findfood.Databases.DatabaseUser;
+import com.example.findfood.local.LocalStorage;
+import com.example.findfood.model.HDCT;
+import com.example.findfood.model.Order;
+import com.example.findfood.model.Token;
+import com.example.findfood.model.User;
+import com.example.findfood.Notification.Data;
+import com.example.findfood.Notification.DataHoaDon;
+import com.example.findfood.Notification.Sender;
+import com.example.findfood.Notification.SenderHoaDon;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -64,6 +78,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.example.findfood.MainActivity.emailuser;
+
 public class ThanhToanActivity extends AppCompatActivity {
     RecyclerView rcvcart;
     CartAdapter cartAdapter =null;
@@ -73,9 +89,9 @@ public class ThanhToanActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView titletoolbar,txtaddress,txttientong;
     RelativeLayout linearbackground;
-    DatabaseHDCT databaseHDCT;
-    DatabaseUser databaseUser;
-    DatabaseStore databaseStore;
+    DatabaseHDCT daoHDCT;
+    DatabaseUser daoUser;
+    DatabaseStore daoStore;
     Button btnthanhtoan;
     double tongtien=0;
     LinearLayout linearLayout;
@@ -86,16 +102,14 @@ public class ThanhToanActivity extends AppCompatActivity {
     String namefood,nameuser,namestore;
     int slm;
     double gia;
-    @SuppressLint("WrongViewCast")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanh_toan);
         rcvcart=findViewById(R.id.rcvcart);
         localstorage = new LocalStorage(this);
-        getWindow().setStatusBarColor(ContextCompat.getColor(ThanhToanActivity.this, R.color.xam));
+        getWindow().setStatusBarColor(ContextCompat.getColor(ThanhToanActivity.this, R.color.cam));
         toolbar = findViewById(R.id.toolbar);
         scrollView = findViewById(R.id.scrollView);
         linearLayout = findViewById(R.id.linear1);
@@ -109,7 +123,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         decimalFormat.applyPattern("#,###,###,###");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        titletoolbar.setText("Cart");
+        titletoolbar.setText("Đơn Hàng");
         titletoolbar.setTextSize(30);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         gson = new Gson();
@@ -127,7 +141,7 @@ public class ThanhToanActivity extends AppCompatActivity {
 
 
         for (Order order: getCartList()){
-            namestore=  order.getStore().getTokenstore();
+            namestore =  order.getStore().getTokenstore();
             nameuser=  order.getUser().getEmail();
         }
         HDCT hoadonchitiet = new HDCT(keyhdct,keyhdct,currentDateandTime,thoigian,false,user.getUid(),getCartList());
@@ -146,10 +160,10 @@ public class ThanhToanActivity extends AppCompatActivity {
             btnthanhtoan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    databaseHDCT = new DatabaseHDCT(ThanhToanActivity.this);
+                    daoHDCT = new DatabaseHDCT(ThanhToanActivity.this);
                     for (HDCT hdct: hdctArrayList){
 
-                        databaseHDCT.insert(hdct);
+                        daoHDCT.insert(hdct);
                         sendNotifiaction(namestore,nameuser,"Xác nhận đơn hàng",user.getUid(),hdct.getIdhct());
                     }
                     localstorage.deleteCart();
@@ -157,8 +171,6 @@ public class ThanhToanActivity extends AppCompatActivity {
                     linearbackground.setBackgroundResource(R.drawable.empty_cart);
                     scrollView.setVisibility(View.GONE);
                     linearLayout.setVisibility(View.GONE);
-                    Intent intent = new Intent(getApplicationContext(), CartActivity.class);
-                    startActivity(intent);
                 }
             });
         }else {
@@ -170,8 +182,8 @@ public class ThanhToanActivity extends AppCompatActivity {
 
         }
 
-        databaseUser = new DatabaseUser( ThanhToanActivity.this);
-        databaseUser.getAll(new UserCallBack() {
+        daoUser = new DatabaseUser( ThanhToanActivity.this);
+        daoUser.getAll(new UserCallBack() {
             @Override
             public void onSuccess(ArrayList<User> lists) {
                 for (int i = 0; i<lists.size();i++){

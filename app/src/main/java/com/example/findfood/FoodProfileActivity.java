@@ -108,7 +108,7 @@ public class FoodProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getWindow().setStatusBarColor(ContextCompat.getColor(FoodProfileActivity.this, R.color.colorPrimaryTransparent));
+        getWindow().setStatusBarColor(ContextCompat.getColor(FoodProfileActivity.this, R.color.cam));
         Intent intent = getIntent();
         Picasso.get().load(intent.getStringExtra("img")).into(iv_backdrop);
         Picasso.get().load(intent.getStringExtra("img")).into(iv_detail_poster);
@@ -242,13 +242,13 @@ public class FoodProfileActivity extends AppCompatActivity {
                         }
                     }
                     for (int i = 0; i < storeArrayList.size(); i++) {
-                        if (storeArrayList.get(i).getEmail().matches(idstore)) {
+                        if (storeArrayList.get(i).getEmail() != null && storeArrayList.get(i).getEmail().matches(idstore)) {
                             store = storeArrayList.get(i);
                             break;
                         }
                     }
                     for (int i = 0; i < dsUser.size(); i++) {
-                        if (dsUser.get(i).getEmail().matches(emailuser)) {
+                        if (dsUser.get(i).getEmail() != null && dsUser.get(i).getEmail().matches(emailuser)) {
                             user = dsUser.get(i);
                             break;
                         }
@@ -337,7 +337,7 @@ public class FoodProfileActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Food> lists) {
                 foodArrayList.clear();
                 for (int i = 0; i < lists.size(); i++) {
-                    if (lists.get(i).getIdstore().equalsIgnoreCase(idstore)) {
+                    if (lists.get(i).getIdstore() != null && lists.get(i).getIdstore().equalsIgnoreCase(idstore)) {
                         foodArrayList.add(lists.get(i));
                         foodAdapter.notifyDataSetChanged();
                     }

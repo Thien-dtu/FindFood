@@ -156,6 +156,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
 //
 //            }
 //        });
+        btnLoginFacebok.setVisibility(View.INVISIBLE);
         Toast.makeText(getApplicationContext(), "Đang phát triển, dự kiến khả dụng : CDIO 4", Toast.LENGTH_SHORT).show();
     }
 
