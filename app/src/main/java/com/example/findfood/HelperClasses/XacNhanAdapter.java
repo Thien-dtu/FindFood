@@ -2,6 +2,7 @@ package com.example.findfood.HelperClasses;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -88,6 +89,7 @@ public class XacNhanAdapter extends RecyclerView.Adapter<XacNhanAdapter.MyViewHo
                 Dialog myDialog = new Dialog(context);
                 myDialog.setContentView(R.layout.dulieusach);
                 myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                Button quaylai = myDialog.findViewById(R.id.quaylai);
                 TextView txttongtien = (TextView) myDialog.findViewById(R.id.txttongtien);
                 TextView  txtnguoimua =  myDialog.findViewById(R.id.txtnguoimua);
                 final TextView   txtnguoiban =  myDialog.findViewById(R.id.txtnguoiban);
@@ -127,7 +129,8 @@ public class XacNhanAdapter extends RecyclerView.Adapter<XacNhanAdapter.MyViewHo
 
                                 for (Order order : orderArrayList){
                                     tongtien1 += order.getSoluongmua() * order.getFood().getGia();
-                                    tokkenstore = order.getStore().getEmail();
+//                                    tokkenstore = order.getStore().getEmail();
+                                    tokkenstore = "test1@gmail.com";
                                 }
 
 
@@ -143,6 +146,13 @@ public class XacNhanAdapter extends RecyclerView.Adapter<XacNhanAdapter.MyViewHo
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
+                    }
+                });
+
+                quaylai.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        myDialog.cancel();
                     }
                 });
 

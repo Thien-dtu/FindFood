@@ -14,19 +14,19 @@
 
     <LinearLayout
         android:id="@+id/khung"
-        android:layout_width="150dp"
+        android:layout_width="157dp"
         android:layout_height="280dp"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/vien"
-            android:layout_width="150dp"
+            android:layout_width="157dp"
             android:layout_height="170dp"
             android:background="@color/white">
 
             <ImageView
                 android:id="@+id/imgfood"
-                android:layout_width="150dp"
+                android:layout_width="157dp"
                 android:layout_height="170dp"
                 android:background="@color/white"
                 android:scaleType="centerCrop" />

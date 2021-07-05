@@ -19,7 +19,6 @@
         android:layout_gravity="bottom|start"
         android:layout_margin="50dp" />
 
-
     <FrameLayout
         android:id="@+id/fl_shadow_container"
         android:background="@drawable/dr_bg"

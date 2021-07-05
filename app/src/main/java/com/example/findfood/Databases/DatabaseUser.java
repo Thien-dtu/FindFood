@@ -56,12 +56,12 @@ public class DatabaseUser {
         mRef.child(key).setValue(item).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(context, "Sign Up Thành Công", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Sign Up Thành Công", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context, "Sign Up Thất Bại", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Sign Up Thất Bại", Toast.LENGTH_SHORT).show();
             }
         });
     }

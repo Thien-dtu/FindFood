@@ -19,8 +19,10 @@ import com.example.findfood.CallBack.UserCallBack;
 import com.example.findfood.DangNhapActivity;
 import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.EditProfile;
+import com.example.findfood.GiaoDichActivity;
 import com.example.findfood.MainActivity;
 import com.example.findfood.R;
+import com.example.findfood.ThanhToanActivity;
 import com.example.findfood.View.CartActivity;
 import com.example.findfood.View.ChatActivity;
 import com.example.findfood.View.FavoriteActivity;
@@ -41,7 +43,7 @@ public class TrangCaNhan extends AppCompatActivity {
     private Switch darkModeSwitch;
     RelativeLayout edtEditProfile;
     ImageView profileCircleImageView;
-    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword;
+    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword,txtGioHang;
     TextView txtYeuThich,map,txtVersion,txtMesenger,txtDonHang;
     DatabaseUser databaseUser;
     FirebaseUser firebaseUser;
@@ -64,6 +66,7 @@ public class TrangCaNhan extends AppCompatActivity {
         usernameTextView = findViewById(R.id.usernameTextView);
         email= findViewById(R.id.email);
         txtlogout = findViewById(R.id.txtlogout);
+        txtGioHang = findViewById(R.id.txtGioHang);
         txtchangepassword = findViewById(R.id.txtchangepassword);
         map = findViewById(R.id.map);
         txteditprofile = findViewById(R.id.txteditprofile);
@@ -156,6 +159,13 @@ public class TrangCaNhan extends AppCompatActivity {
             public void onClick(View v) {
                 Intent iDonHang = new Intent(getApplicationContext(), CartActivity.class);
                 startActivity(iDonHang);
+            }
+        });
+        txtGioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iGioHang = new Intent(getApplicationContext(), ThanhToanActivity.class);
+                startActivity(iGioHang);
             }
         });
         txtYeuThich.setOnClickListener(new View.OnClickListener() {

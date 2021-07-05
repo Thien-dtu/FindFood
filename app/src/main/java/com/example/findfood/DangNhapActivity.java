@@ -243,7 +243,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                 if (task.isSuccessful()) {
                     for (int i = 0; i < datastore.size(); i++) {
                         if (datastore.get(i).getEmail().equalsIgnoreCase(email.toString()) && datastore.get(i).getPassword().equalsIgnoreCase(password.toString())) {
-                            Toast.makeText(getApplicationContext(), "Đăng Ký Thành Công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Đăng Nhập Thành Công", Toast.LENGTH_SHORT).show();
                             Intent is = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(is);
                             break;
