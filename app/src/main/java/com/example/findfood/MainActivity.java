@@ -41,6 +41,7 @@ import com.example.findfood.HelperClasses.MainAdapter;
 import com.example.findfood.HelperClasses.MainAdapter1;
 import com.example.findfood.HelperClasses.ModelItem;
 import com.example.findfood.View.MapActivity;
+import com.example.findfood.View.SearchActivity;
 import com.example.findfood.View.User.TrangCaNhan;
 import com.example.findfood.model.Categories;
 import com.example.findfood.model.Food;
@@ -67,7 +68,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity implements LocationListener {
     private AdapterViewPayer adapter;
     SliderView sliderView;
-    EditText edtsearch;
+    TextView edtsearch;
     ArrayList<Categories> datacategories;
     DatabaseCategories databaseCategories;
     TextView txtslogan, txtDiachi;
@@ -75,10 +76,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     FoodAdapter foodAdapter;
     ArrayList<Food> foodArrayList;
     DatabaseFood databaseFood;
-    RecyclerView rcvhome,rcvmonan;
+    RecyclerView rcvhome, rcvmonan;
 
     LocationManager locationManager;
-    String country, locality,state, noi;
+    String country, locality, state, noi;
 
 
     FirebaseStorage storage;
@@ -111,11 +112,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         rcvmonan = findViewById(R.id.rcvmonan);
         txtslogan = findViewById(R.id.txtslogan);
         txtDiachi = findViewById(R.id.txtdiachi);
+        edtsearch = findViewById(R.id.edtsearch);
         anhdaidien = findViewById(R.id.anhdaidien);
         databaseCategories = new DatabaseCategories(getApplicationContext());
         datacategories = new ArrayList<>();
-        categoryAdapter = new CategoryAdapter(datacategories,getApplicationContext());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        categoryAdapter = new CategoryAdapter(datacategories, getApplicationContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         rcvhome.setLayoutManager(linearLayoutManager);
         rcvhome.setHasFixedSize(true);
         rcvhome.setAdapter(categoryAdapter);
@@ -127,13 +129,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             @Override
             public void onSuccess(ArrayList<User> lists) {
                 for (int i = 0; i < lists.size(); i++) {
-                    if (lists.get(i).getToken()!=null && lists.get(i).getToken().equalsIgnoreCase(firebaseUser.getUid())) {
+                    if (lists.get(i).getToken() != null && lists.get(i).getToken().equalsIgnoreCase(firebaseUser.getUid())) {
                         anh = lists.get(i).getImage();
                     }
                 }
-                if (anh ==null){
+                if (anh == null) {
                     Picasso.get().load("https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg").into(anhdaidien);
-                }else if (anh !=null){
+                } else if (anh != null) {
                     Picasso.get().load(anh).into(anhdaidien);
                 }
             }
@@ -145,11 +147,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         });
 
         Date currentTime = Calendar.getInstance().getTime();
-        if (currentTime.getHours() <12) {
+        if (currentTime.getHours() < 12) {
             txtslogan.setText("Bạn Muốn Ăn Gì Sáng Nay ?");
             foodArrayList = new ArrayList<>();
-            foodAdapter = new FoodAdapter(foodArrayList,getApplicationContext());
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            foodAdapter = new FoodAdapter(foodArrayList, getApplicationContext());
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
             rcvmonan.setLayoutManager(gridLayoutManager);
             rcvmonan.setHasFixedSize(true);
             rcvmonan.setAdapter(foodAdapter);
@@ -158,8 +160,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 @Override
                 public void onSuccess(ArrayList<Food> lists) {
                     foodArrayList.clear();
-                    for (int i =0;i<lists.size();i++){
-                        if (lists.get(i).getStatus().equalsIgnoreCase("Sáng")){
+                    for (int i = 0; i < lists.size(); i++) {
+                        if (lists.get(i).getStatus().equalsIgnoreCase("Sáng")) {
                             foodArrayList.add(lists.get(i));
                             foodAdapter.notifyDataSetChanged();
                         }
@@ -171,11 +173,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
                 }
             });
-        } else if (currentTime.getHours() <= 18 && currentTime.getHours() >= 14 ) {
+        } else if (currentTime.getHours() <= 18 && currentTime.getHours() >= 14) {
             txtslogan.setText("Bạn Muốn Ăn Gì Chiều Nay ?");
             foodArrayList = new ArrayList<>();
-            foodAdapter = new FoodAdapter(foodArrayList,getApplicationContext());
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            foodAdapter = new FoodAdapter(foodArrayList, getApplicationContext());
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
             rcvmonan.setLayoutManager(gridLayoutManager);
             rcvmonan.setHasFixedSize(true);
             rcvmonan.setAdapter(foodAdapter);
@@ -184,8 +186,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 @Override
                 public void onSuccess(ArrayList<Food> lists) {
                     foodArrayList.clear();
-                    for (int i =0;i<lists.size();i++){
-                        if (lists.get(i).getStatus().equalsIgnoreCase("Chiều")){
+                    for (int i = 0; i < lists.size(); i++) {
+                        if (lists.get(i).getStatus().equalsIgnoreCase("Chiều")) {
                             foodArrayList.add(lists.get(i));
                             foodAdapter.notifyDataSetChanged();
                         }
@@ -200,8 +202,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         } else if (currentTime.getHours() > 18) {
             txtslogan.setText("Bạn Muốn Ăn Gì Tối Nay ?");
             foodArrayList = new ArrayList<>();
-            foodAdapter = new FoodAdapter(foodArrayList,getApplicationContext());
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+            foodAdapter = new FoodAdapter(foodArrayList, getApplicationContext());
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
             rcvmonan.setLayoutManager(gridLayoutManager);
             rcvmonan.setHasFixedSize(true);
             rcvmonan.setAdapter(foodAdapter);
@@ -210,8 +212,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 @Override
                 public void onSuccess(ArrayList<Food> lists) {
                     foodArrayList.clear();
-                    for (int i =0;i<lists.size();i++){
-                        if (lists.get(i).getStatus().equalsIgnoreCase("Tối")){
+                    for (int i = 0; i < lists.size(); i++) {
+                        if (lists.get(i).getStatus().equalsIgnoreCase("Tối")) {
                             foodArrayList.add(lists.get(i));
                             foodAdapter.notifyDataSetChanged();
                         }
@@ -272,18 +274,26 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 v.getContext().startActivity(intent);
             }
         });
+        edtsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iTimKiem = new Intent(v.getContext(), SearchActivity.class);
+                v.getContext().startActivity(iTimKiem);
+            }
+        });
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         Intent intent = getIntent();
         emailuser = intent.getStringExtra("email");
-        return ;
+        return;
 
 
     }
 
 
+
     /*----------- Lấy vị trí hiện tại -----------*/
-    
+
     private void locationEnabled() {
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         boolean gps_enabled = false;
@@ -403,6 +413,5 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     /*----------- End tạo ảnh SliderLoad -----------*/
-
 
 }
