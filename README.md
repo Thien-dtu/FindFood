@@ -7,11 +7,11 @@
 - FindFood is a application use to help many people can search and buy food and drink during the epidemic season
 - All data is Real Time Database
 
-<img src="./assets/backgroud.jpg" alt="screenshot" width="800">
+<img src="./assets/backgroud.jpg" alt="screenshot" width="300">
 
 ### Context Diagram:
 
-<img src="./assets/context.jpg" alt="context-diagram" width="800" />
+<img src="./assets/context.jpg" alt="context-diagram" width="300" />
 
 ### Folder Structure:
 
