@@ -21,7 +21,7 @@
   /gradle
 ```
 
-- `modules`: include all the project's source code, divided into each module
+- `FindFood`: include all the project's source code, divided into each module
 - `app`: source code of Application
 - `gradle`: source code of setting gradle
 
