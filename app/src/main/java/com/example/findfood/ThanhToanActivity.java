@@ -141,8 +141,8 @@ public class ThanhToanActivity extends AppCompatActivity {
 
 
         for (Order order: getCartList()){
-//            namestore =  order.getStore().getTokenstore();
-            namestore = "iwoqUrDrVJTzPEV82ly2nhqoHhC3";
+            namestore =  order.getStore().getTokenstore();
+//            namestore = "iwoqUrDrVJTzPEV82ly2nhqoHhC3";
             nameuser=  order.getUser().getEmail();
         }
         HDCT hoadonchitiet = new HDCT(keyhdct,keyhdct,currentDateandTime,thoigian,false,user.getUid(),getCartList());

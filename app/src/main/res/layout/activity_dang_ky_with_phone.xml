@@ -59,17 +59,17 @@
                     android:id="@+id/edtPhone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:backgroundTint="@color/cam"
-                    android:textColor="@color/cam"
-                    android:textColorHint="@color/cam"
                     android:ems="10"
+                    android:gravity="center"
                     android:hint="Số điện thoại"
                     android:imeOptions="actionDone"
                     android:importantForAutofill="no"
                     android:inputType="number"
                     android:maxLength="9"
                     android:text=""
+                    android:textColor="@color/cam"
+                    android:textColorHint="@color/cam"
                     android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>

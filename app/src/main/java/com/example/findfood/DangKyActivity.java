@@ -53,16 +53,16 @@ public class DangKyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
 
-        edtHoTen   = findViewById(R.id.fullName);
-        edtEmail      = findViewById(R.id.Email);
-        edtPass   = findViewById(R.id.password);
+        edtHoTen = findViewById(R.id.fullName);
+        edtEmail = findViewById(R.id.Email);
+        edtPass = findViewById(R.id.password);
         edtConfPass = findViewById(R.id.confPassword);
         edtPhone = findViewById(R.id.edtPhone);
         rdbNam = findViewById(R.id.rdbNam);
         rdbNu = findViewById(R.id.rdbNu);
         rdbKhac = findViewById(R.id.rdbKhac);
-        btnDangKy= findViewById(R.id.btnOTP);
-        btnDangNhap   = findViewById(R.id.btnDangNhap);
+        btnDangKy = findViewById(R.id.btnOTP);
+        btnDangNhap = findViewById(R.id.btnDangNhap);
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -164,40 +164,6 @@ public class DangKyActivity extends AppCompatActivity {
                                     finish();
 
                                 }
-//                                if (task.isSuccessful()){
-//                                    User user = new User(
-////                                            userId,
-//                                            hoten,phone,ngaysinh,email,gioitinh
-//                                    );
-                                        //Test mã định danh
-//                                    DatabaseReference myRef = database.getReference("Users");
-//                                    myRef.child(userId).child("hoten").setValue(hoten);
-//                                    myRef.child(userId).child("phone").setValue(phone);
-//                                    myRef.child(userId).child("ngaysinh").setValue(ngaysinh);
-//                                    myRef.child(userId).child("email").setValue(email);
-//                                    myRef.child(userId).child("gioitinh").setValue(gioitinh);
-//                                    Toast.makeText(DangKyActivity.this, getString(R.string.dangNhapThanhCong), Toast.LENGTH_LONG).show();
-//                                    startActivity(new Intent(getApplicationContext(),DangNhapActivity.class));
-//                                    finish();
-
-//                                      Đăng nhập thuần
-
-//                                    FirebaseDatabase.getInstance().getReference("Users")
-//                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<Void> task) {
-//                                            progressBar.setVisibility(View.GONE);
-//                                            if (task.isSuccessful()){
-//                                                Toast.makeText(DangKyActivity.this, getString(R.string.dangNhapThanhCong), Toast.LENGTH_LONG).show();
-//                                                startActivity(new Intent(getApplicationContext(),DangNhapActivity.class));
-//                                                finish();
-//                                            }
-//                                        }
-//                                    });
-//                                }else {
-//                                    Toast.makeText(DangKyActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                                }
                             }
                         });
             }
@@ -223,7 +189,6 @@ public class DangKyActivity extends AppCompatActivity {
 
                 Year = year;
                 Month = monthOfYear;
-                dayOfMonth = dayOfMonth;
                 if (Year > yearCurrent){
                     Toast.makeText(getApplicationContext(), "Sai định dạng ngày/tháng/năm", Toast.LENGTH_SHORT).show();
                 }

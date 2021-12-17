@@ -8,5 +8,15 @@ z    <style name="Theme.FindFood" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="floatingbutton">foating
+        <item name="colorPrimary">#ff6f00</item>
+        <item name="colorPrimaryVariant">#3700B3</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#ff6f00</item>
+        <item name="colorSecondaryVariant">#018786</item>
+        <item name="colorOnSecondary">@color/white</item>
+    </style>
+
 
 </resources>

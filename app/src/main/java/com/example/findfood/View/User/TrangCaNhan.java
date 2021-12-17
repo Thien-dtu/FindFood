@@ -21,6 +21,7 @@ import com.example.findfood.Databases.DatabaseUser;
 import com.example.findfood.EditProfile;
 import com.example.findfood.GiaoDichActivity;
 import com.example.findfood.MainActivity;
+import com.example.findfood.MapsActivity;
 import com.example.findfood.R;
 import com.example.findfood.ThanhToanActivity;
 import com.example.findfood.View.CartActivity;
@@ -43,7 +44,7 @@ public class TrangCaNhan extends AppCompatActivity {
     private Switch darkModeSwitch;
     RelativeLayout edtEditProfile;
     ImageView profileCircleImageView;
-    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword,txtGioHang;
+    TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword,txtGioHang, txtmap;
     TextView txtYeuThich,map,txtVersion,txtMesenger,txtDonHang;
     DatabaseUser databaseUser;
     FirebaseUser firebaseUser;
@@ -59,6 +60,7 @@ public class TrangCaNhan extends AppCompatActivity {
         back = findViewById(R.id.back);
         txtVersion = findViewById(R.id.txtVersion);
         edtEditProfile = findViewById(R.id.edtEditProfile);
+        txtmap = findViewById(R.id.map);
         txtMesenger = findViewById(R.id.txtMesenger);
         txtDonHang = findViewById(R.id.txtDonHang);
         txtYeuThich = findViewById(R.id.txtYeuThich);
@@ -104,13 +106,13 @@ public class TrangCaNhan extends AppCompatActivity {
             }
         });
 
-//        map.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(), MapActivity.class));
-//            }
-//        });
-        map.setVisibility(View.GONE);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            }
+        });
+//        map.setVisibility(View.GONE);
 
         darkModeSwitch.setVisibility(View.GONE);
 

@@ -8,7 +8,7 @@
     tools:context=".EditProfile">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="100dp">
 
@@ -44,65 +44,71 @@
                 android:id="@+id/imgProfile"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                app:civ_border_width="5dp"
-                app:civ_border_color="#fff"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/avatar"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"/>
+                android:layout_marginBottom="30dp"
+                android:src="@drawable/avatar"
+                app:civ_border_color="#fff"
+                app:civ_border_width="5dp"
+                tools:ignore="ImageContrastCheck" />
 
             <EditText
-                android:layout_width="300dp"
-                android:hint="Nhập Tên"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:theme="@style/foating"
-                android:layout_gravity="center"
                 android:id="@+id/profilename"
-                android:paddingBottom="10dp"
-                android:background="@drawable/boggocedt"
-                android:layout_height="wrap_content"/>
-
-
-
-            <EditText
                 android:layout_width="300dp"
-                android:hint="Nhập Email"
-                android:paddingLeft="20dp"
-                android:id="@+id/profilemail"
-                android:paddingTop="10dp"
-                android:theme="@style/foating"
-                android:layout_gravity="center"
-                android:paddingBottom="10dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/boggocedt"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"/>
-            <EditText
-                android:layout_width="300dp"
-                android:hint="Nhập Số Điện Thoại"
-                android:layout_marginTop="20dp"
-                android:id="@+id/profilephone"
-                android:paddingLeft="20dp"
-                android:theme="@style/foating"
-                android:paddingTop="10dp"
                 android:layout_gravity="center"
-                android:paddingBottom="10dp"
                 android:background="@drawable/boggocedt"
-                android:layout_height="wrap_content"/>
-            <EditText
-                android:layout_width="300dp"
-                android:hint="Nhập Địa Chỉ"
-                android:layout_marginTop="20dp"
-                android:id="@+id/profileaddress"
+                android:hint="Nhập Tên"
+                android:textColorHint="#757575"
                 android:paddingLeft="20dp"
-                android:theme="@style/foating"
                 android:paddingTop="10dp"
-                android:layout_gravity="center"
                 android:paddingBottom="10dp"
+                android:theme="@style/foating" />
+
+
+            <EditText
+                android:id="@+id/profilemail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boggocedt"
+                android:hint="Nhập Email"
+                android:textColorHint="#757575"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:theme="@style/foating"
+                app:passwordToggleEnabled="true" />
+
+            <EditText
+                android:id="@+id/profilephone"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boggocedt"
+                android:hint="Nhập Số Điện Thoại"
+                android:textColorHint="#757575"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:theme="@style/foating" />
+
+            <EditText
+                android:id="@+id/profileaddress"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/boggocedt"
-                android:layout_height="wrap_content"/>
+                android:hint="Nhập Địa Chỉ"
+                android:textColorHint="#757575"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:theme="@style/AppTheme" />
 
             <LinearLayout
                 android:layout_width="300dp"
@@ -111,16 +117,17 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:layout_width="235dp"
-                    android:hint="Nhập Ngày Tháng Năm Sinh"
                     android:id="@+id/edtNgaySinh"
-                    android:theme="@style/foating"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingBottom="10dp"
+                    android:layout_width="235dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/boggocedt"
-                    android:layout_height="wrap_content"/>
+                    android:hint="Nhập Ngày Tháng Năm Sinh"
+                    android:textColorHint="#757575"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:theme="@style/AppTheme" />
 
                 <ImageButton
                     android:id="@+id/button_date"
@@ -148,7 +155,7 @@
                 <RadioButton
                     android:id="@+id/rdbNam"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:text="Nam"
                     android:textSize="16sp"
                     android:layout_marginLeft="13dp"/>
@@ -156,14 +163,14 @@
                 <RadioButton
                     android:id="@+id/rdbNu"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:text="Nữ"
                     android:textSize="16sp"
                     android:layout_marginLeft="13dp" />
                 <RadioButton
                     android:id="@+id/rdbKhac"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:text="Khác"
                     android:textSize="16sp"
                     android:layout_marginLeft="13dp"/>
@@ -174,7 +181,7 @@
                 android:layout_marginTop="20dp"
                 android:id="@+id/txtGioiTinh"
                 android:paddingLeft="20dp"
-                android:theme="@style/foating"
+                android:theme="@style/AppTheme"
                 android:paddingTop="10dp"
                 android:layout_gravity="center"
                 android:paddingBottom="10dp"
@@ -190,7 +197,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="20dp"
-                android:theme="@style/foating"
+                android:theme="@style/AppTheme"
                 android:background="@drawable/boggocbutton"
                 android:text="Cập Nhật"/>
 
