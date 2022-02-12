@@ -91,7 +91,6 @@ public class ThanhToanActivity extends AppCompatActivity {
     RelativeLayout linearbackground;
     DatabaseHDCT daoHDCT;
     DatabaseUser daoUser;
-    DatabaseStore daoStore;
     Button btnthanhtoan;
     double tongtien=0;
     LinearLayout linearLayout;
@@ -106,6 +105,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_thanh_toan);
         rcvcart=findViewById(R.id.rcvcart);
         localstorage = new LocalStorage(this);

@@ -182,11 +182,8 @@ public class DangKyActivity extends AppCompatActivity {
     private void buttonSelectDate() {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker view, int year,
-                                  int monthOfYear, int dayOfMonth) {
-
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 edtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-
                 Year = year;
                 Month = monthOfYear;
                 if (Year > yearCurrent){
