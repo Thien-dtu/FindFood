@@ -145,6 +145,11 @@
             android:layout_marginStart="60dp"
             android:text="Giỏ Hàng" />
         <TextView
+            android:id="@+id/txtQRCode"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:layout_marginStart="60dp"
+            android:text="QR Code" />
+        <TextView
             android:id="@+id/map"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/icons8_maps_48px"

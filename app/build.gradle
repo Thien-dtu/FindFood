@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.secrets_gradle_plugin' version '0.5'
+//    id 'com.google.secrets_gradle_plugin' version '0.5'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 apply plugin: 'com.google.gms.google-services'
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.findfood"
         minSdkVersion 26
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -27,14 +28,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildFeatures {
-        viewBinding true
+
+    buildFeatures{
+        viewBinding = true
     }
 }
 repositories {
-    google()
     mavenCentral()
-    jcenter()
+    google()
 }
 
 dependencies {
@@ -99,13 +100,14 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //Location
-    implementation 'com.google.android.gms:play-services-maps:18.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
-    implementation 'com.google.android.gms:play-services-location:18.0.0'
-    implementation 'com.google.android.gms:play-services-nearby:18.0.0'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-nearby:18.0.2'
     implementation 'com.google.android.libraries.places:places:2.5.0'
     //noinspection GradleDynamicVersion
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.1.1'
 
 
 }

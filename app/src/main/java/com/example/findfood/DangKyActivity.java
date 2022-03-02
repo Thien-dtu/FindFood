@@ -152,13 +152,16 @@ public class DangKyActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (!task.isSuccessful()) {
+                                    progressBar.setVisibility(View.INVISIBLE);
                                     Toast.makeText(getApplicationContext(), "Đăng ký Thất Bại." ,
                                             Toast.LENGTH_SHORT).show();
                                 } else {
 
                                     DatabaseUser = new DatabaseUser(getApplicationContext());
                                     User user = new User(email,password,hoten,phone,null,null,ngaysinh,gioitinh,mAuth.getUid());
+
                                     DatabaseUser.insert(user);
+                                    progressBar.setVisibility(View.INVISIBLE);
                                     Toast.makeText(getApplicationContext(), "Đăng Ký Thành Công.", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(),DangNhapActivity.class));
                                     finish();

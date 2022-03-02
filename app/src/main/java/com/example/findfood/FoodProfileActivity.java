@@ -86,24 +86,62 @@ public class FoodProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_profile);
+
+    //Khai báo các biến ở layout/ activity_food_profile
+
+        // Khai báo hình ảnh ở phía trên cùng của trang layout/ view_card_poster
         iv_backdrop = findViewById(R.id.iv_backdrop);
-        iv_detail_poster = findViewById(R.id.iv_detail_poster);
+
+        //Khai báo giá tiền ở layout/ activity_food_profile
         tv_detail_rating = findViewById(R.id.tv_detail_rating);
+
+        // Khai báo hình ảnh sản phẩm ở layout/ view_card_poster
+        iv_detail_poster = findViewById(R.id.iv_detail_poster);
+
+        // Khai báo trạng thái đăng bỏi ở layout/ activity_food_profile
         tv_detail_vote_count = findViewById(R.id.tv_detail_vote_count);
+
+        // Khai báo idfood ở layout/ activity_food_profile
         tv_detail_release_date = findViewById(R.id.tv_detail_release_date);
+
+        // Khai báo khung gợi ý sản phẩm ở layout/ activity_food_profile
         rv_reviews = findViewById(R.id.rv_reviews);
+
+        // Khhai báo button thêm vào giỏ hàng ở layout/ activity_food_profile
         btn_insertcart = findViewById(R.id.btn_insertcart);
+
+        // Khai báo dấu + ở layout_connection_problem trong layout/ activity_food_profile
         plush = findViewById(R.id.plush);
+
+        // Khai báo dấu - ở layout_connection_problem trong layout/ activity_food_profile
         minus = findViewById(R.id.minus);
+
+        // Khai báo số lượng sản phẩm ở layout_connection_problem trong layout/ activity_food_profile
         tvsl = findViewById(R.id.tvsl);
+
+        // Khai báo số lượng sản phẩm ở layout/ activity_food_profile
         txtsoluong = findViewById(R.id.txtsoluong);
+
+        // Khai báo địa chỉ sản phẩm ở layout/ activity_food_profile
         txtdiachi = findViewById(R.id.txtdiachi);
+
+        // Khai báo mô tả sản phẩm ở layout/ activity_food_profile
         txtmota = findViewById(R.id.txtmota);
+
+        // Khai báo trạng thái sản phẩm : " Sáng, trưa, chiều " ở layout/ activity_food_profile
         txtstatus = findViewById(R.id.txtstatus);
+
+        // Khai báo mã thể loại sản phẩm : " Sáng, trưa, chiều " ở layout/ activity_food_profile
         txtmatl = findViewById(R.id.txtmatl);
+
+        // Khai báo toolbar ở layout/ activity_food_profile
         toolbar = findViewById(R.id.toolbar);
+
+        //format định dạng ngày tháng năm
         final DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         decimalFormat.applyPattern("#,###,###,###");
+
+        // Khai báo phần header của file activity_food_profile
         collapsingToolbarLayout = findViewById(R.id.collapsing);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

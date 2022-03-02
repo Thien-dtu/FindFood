@@ -1,5 +1,6 @@
 package com.example.findfood.HelperClasses;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,7 +55,7 @@ public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         }
 
 @Override
-public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+public void onBindViewHolder(@NonNull final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 final DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         decimalFormat.applyPattern("#,###,###,###");
 final Order cart = cartList.get(position);

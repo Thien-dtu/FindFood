@@ -127,9 +127,9 @@ public class ThanhToanActivity extends AppCompatActivity {
         titletoolbar.setTextSize(30);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         gson = new Gson();
-        hdctArrayList=new ArrayList<>();
-        orderArrayList=new ArrayList<>();
-        orderArrayList= getCartList();
+        hdctArrayList = new ArrayList<>();
+        orderArrayList = new ArrayList<>();
+        orderArrayList = getCartList();
         user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("HDCT");
         String keyhdct = databaseReference.push().getKey();
@@ -147,7 +147,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         }
         HDCT hoadonchitiet = new HDCT(keyhdct,keyhdct,currentDateandTime,thoigian,false,user.getUid(),getCartList());
         hdctArrayList.add(hoadonchitiet);
-        Log.i("size", String.valueOf(hdctArrayList.size()));
+            Log.i("size", String.valueOf(hdctArrayList.size()));
         if (getCartList().size() != 0){
             cartAdapter = new CartAdapter(orderArrayList,ThanhToanActivity.this);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ThanhToanActivity.this,LinearLayoutManager.VERTICAL,false);

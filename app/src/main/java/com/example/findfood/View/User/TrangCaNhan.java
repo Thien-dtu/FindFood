@@ -45,7 +45,7 @@ public class TrangCaNhan extends AppCompatActivity {
     RelativeLayout edtEditProfile;
     ImageView profileCircleImageView;
     TextView usernameTextView, email, txtlogout,history,txteditprofile,txtchangepassword,txtGioHang, txtmap;
-    TextView txtYeuThich,map,txtVersion,txtMesenger,txtDonHang;
+    TextView txtYeuThich,map,txtVersion,txtMesenger,txtDonHang, txtQRCode;
     DatabaseUser databaseUser;
     FirebaseUser firebaseUser;
 
@@ -58,6 +58,7 @@ public class TrangCaNhan extends AppCompatActivity {
         setContentView(R.layout.activity_trang_ca_nhan);
 
         back = findViewById(R.id.back);
+        txtQRCode = findViewById(R.id.txtQRCode);
         txtVersion = findViewById(R.id.txtVersion);
         edtEditProfile = findViewById(R.id.edtEditProfile);
         txtmap = findViewById(R.id.map);
@@ -101,6 +102,15 @@ public class TrangCaNhan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        txtQRCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), testQRCode.class);
                 startActivity(intent);
                 finish();
             }

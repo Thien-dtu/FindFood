@@ -5,33 +5,44 @@
       <map>
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/drawable-v24/border_item.xml" value="0.240625" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/drawable-xxhdpi/boggocedt.xml" value="0.240625" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/drawable/bg_transparent_toolbar.xml" value="0.202" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/drawable/boggogedt_custom.xml" value="0.240625" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/drawable/ic_launcher_background.xml" value="0.202" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/drawable/overlay_black_bottom.xml" value="0.202" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/font/nunito_bold.xml" value="0.2546875" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_begin.xml" value="0.22447916666666667" />
-        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_cart.xml" value="0.10989583333333333" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_cart.xml" value="0.21" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_chat.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_dang_ky.xml" value="0.25" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_dang_ky_with_phone.xml" value="0.19375" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_dang_nhap.xml" value="0.25" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_edit_profile.xml" value="0.15" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_favorite.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_food_product.xml" value="0.33" />
-        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_food_profile.xml" value="0.19375" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_food_profile.xml" value="0.33" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_giao_dich.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_history.xml" value="0.10989583333333333" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_home_page.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_intro.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_map.xml" value="0.25" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_maps.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_quen_mat_khau.xml" value="0.19375" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_search.xml" value="0.22447916666666667" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_test_qrcode.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_thanh_toan.xml" value="0.22447916666666667" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_tracking_order.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_trang_ca_nhan.xml" value="0.19375" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/item_chat.xml" value="0.22447916666666667" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/itemfood.xml" value="0.22447916666666667" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/itemfoodprofile.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/layout_connection_problem.xml" value="0.22447916666666667" />
-        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_cart.xml" value="0.10989583333333333" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/list_item_review.xml" value="0.22447916666666667" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_cart.xml" value="0.25" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_carthdct.xml" value="0.10989583333333333" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_category.xml" value="0.10989583333333333" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_item.xml" value="0.10989583333333333" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_item1.xml" value="0.10989583333333333" />
-        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_xacnhan.xml" value="0.10989583333333333" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_xacnhan.xml" value="0.33" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/slides_layout.xml" value="0.10989583333333333" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/view_card_poster.xml" value="0.10989583333333333" />
       </map>

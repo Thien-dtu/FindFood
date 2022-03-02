@@ -65,6 +65,7 @@ public class DatabaseUser {
             }
         });
     }
+
     public boolean update(final User item){
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
