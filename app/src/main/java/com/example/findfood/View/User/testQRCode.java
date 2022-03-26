@@ -9,6 +9,8 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.budiyev.android.codescanner.CodeScanner;
@@ -19,12 +21,14 @@ import com.google.zxing.Result;
 
 public class testQRCode extends AppCompatActivity {
     private CodeScanner mCodeScanner;
+    private String kq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_qrcode);
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
+        TextView testQR = findViewById(R.id.testQR);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
                 PackageManager.PERMISSION_GRANTED) {
@@ -35,9 +39,12 @@ public class testQRCode extends AppCompatActivity {
             @Override
             public void onDecoded(@NonNull final Result result) {
                 runOnUiThread(new Runnable() {
+                    @NonNull
                     @Override
                     public void run() {
                         Toast.makeText(testQRCode.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        kq = result.getText();
+                        testQR.setText(kq);
                     }
                 });
             }

@@ -119,7 +119,7 @@ public class TrangCaNhan extends AppCompatActivity {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                startActivity(new Intent(getApplicationContext(), MapActivity.class));
             }
         });
 //        map.setVisibility(View.GONE);
