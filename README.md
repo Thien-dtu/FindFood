@@ -7,6 +7,9 @@
 - FindFood is a application use to help many people can search and buy food and drink during the epidemic season
 - All data is Real Time Database
 
+- Note: Sửa " Nhanh Chóng - Tiện Lợi - Dễ Dàng
+      : Từ nhóm:T3HQ
+      
 <img src="./assets/backgroud.jpg" alt="screenshot" width="300">
 
 ### Context Diagram:
