@@ -68,7 +68,7 @@ public class DatabaseHDCT {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    if(dataSnapshot.child("idhct").getValue(String.class).equalsIgnoreCase(item.getIdhct())){
+                    if(dataSnapshot.child("idHDCT").getValue(String.class).equalsIgnoreCase(item.getIdHDCT())){
                         key=dataSnapshot.getKey();
                         mRef.child(key).setValue(item);
                         Toast.makeText(context, "Update Thành Công", Toast.LENGTH_SHORT).show();
@@ -87,7 +87,7 @@ public class DatabaseHDCT {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    if(dataSnapshot.child("idhct").getValue(String.class).equalsIgnoreCase(matheloai)){
+                    if(dataSnapshot.child("idHDCT").getValue(String.class).equalsIgnoreCase(matheloai)){
                         key=dataSnapshot.getKey();
                         mRef.child(key).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

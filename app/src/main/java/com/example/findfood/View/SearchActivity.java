@@ -71,7 +71,7 @@ public class SearchActivity extends AppCompatActivity {
                     public void onSuccess(ArrayList<Food> lists) {
                         arrayListfood.clear();
                         for (int i =0;i<lists.size();i++){
-                            if (lists.get(i).getNamefood().toLowerCase().contains(TF_location.getText().toString())){
+                            if (lists.get(i).getTenSanPham().toLowerCase().contains(TF_location.getText().toString())){
                                 arrayListfood.add(lists.get(i));
                                 favoriteAdapter = new FavoriteAdapter(arrayListfood,SearchActivity.this);
                                 rcvsearch.setAdapter(favoriteAdapter);

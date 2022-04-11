@@ -42,7 +42,7 @@ public class FragmentGDThanhCong extends Fragment {
             public void onSuccess(ArrayList<HDCT> lists) {
                 arrayList.clear();
                     for (int i =0;i<lists.size();i++){
-                        if (lists.get(i).getUiduser().equalsIgnoreCase(firebaseUser.getUid()) && lists.get(i).isCheck() == true){
+                        if (lists.get(i).getIdUser().equalsIgnoreCase(firebaseUser.getUid()) && lists.get(i).isCheck() == true){
                             arrayList.add(lists.get(i));
                             xacNhanAdapter = new XacNhanAdapter(arrayList,getActivity());
                             rcvthanhcong.setAdapter(xacNhanAdapter);

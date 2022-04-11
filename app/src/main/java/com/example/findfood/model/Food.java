@@ -2,15 +2,21 @@ package com.example.findfood.model;
 
 public class Food {
     private String idfood;
-    private String namefood;
-    private double gia;
-    private int soluong;
-    private String image;
-    private String diachi;
+    private String tenSanPham;
+    private double giaTien;
+    private int soLuong;
+//    private long giaTien;
+//    private long soLuong;
+    private String anh;
+    private String diaChi;
     private String mota;
     private String status;
     private String matheloai;
-    private String idstore;
+    private String idCuaHang;
+    private String idDanhMuc;
+    private String idSanPham;
+    private String khuyenMai;
+    private String trangThai;
     private String tokenstore;
 
 
@@ -18,27 +24,41 @@ public class Food {
     public Food() {
     }
 
-    public Food(String idfood, String namefood, double gia, int soluong, String image, String diachi, String mota, String status, String matheloai, String idstore, String tokenstore) {
+    public Food(String idfood, String tenSanPham, double giaTien, int soLuong, String anh, String diaChi, String mota, String status, String matheloai, String idCuaHang, String idDanhMuc, String idSanPham, String khuyenMai, String trangThai, String tokenstore) {
         this.idfood = idfood;
-        this.namefood = namefood;
-        this.gia = gia;
-        this.soluong = soluong;
-        this.image = image;
-        this.diachi = diachi;
+        this.tenSanPham = tenSanPham;
+        this.giaTien = giaTien;
+        this.soLuong = soLuong;
+        this.anh = anh;
+        this.diaChi = diaChi;
         this.mota = mota;
         this.status = status;
         this.matheloai = matheloai;
-        this.idstore = idstore;
+        this.idCuaHang = idCuaHang;
+        this.idDanhMuc = idDanhMuc;
+        this.idSanPham = idSanPham;
+        this.khuyenMai = khuyenMai;
+        this.trangThai = trangThai;
         this.tokenstore = tokenstore;
     }
 
-    public String getTokenstore() {
-        return tokenstore;
-    }
-
-    public void setTokenstore(String tokenstore) {
-        this.tokenstore = tokenstore;
-    }
+//    public Food(String idfood, String tenSanPham, long giaTien, long soLuong, String anh, String diaChi, String mota, String status, String matheloai, String idCuaHang, String idDanhMuc, String idSanPham, String khuyenMai, String trangThai, String tokenstore) {
+//        this.idfood = idfood;
+//        this.tenSanPham = tenSanPham;
+//        this.giaTien = giaTien;
+//        this.soLuong = soLuong;
+//        this.anh = anh;
+//        this.diaChi = diaChi;
+//        this.mota = mota;
+//        this.status = status;
+//        this.matheloai = matheloai;
+//        this.idCuaHang = idCuaHang;
+//        this.idDanhMuc = idDanhMuc;
+//        this.idSanPham = idSanPham;
+//        this.khuyenMai = khuyenMai;
+//        this.trangThai = trangThai;
+//        this.tokenstore = tokenstore;
+//    }
 
     public String getIdfood() {
         return idfood;
@@ -48,44 +68,61 @@ public class Food {
         this.idfood = idfood;
     }
 
-    public String getNamefood() {
-        return namefood;
+    public String getTenSanPham() {
+        return tenSanPham;
     }
 
-    public void setNamefood(String namefood) {
-        this.namefood = namefood;
+    public void setTenSanPham(String tenSanPham) {
+        this.tenSanPham = tenSanPham;
     }
 
-    public double getGia() {
-        return gia;
+    public double getGiaTien() {
+        return giaTien;
     }
 
-    public void setGia(double gia) {
-        this.gia = gia;
+    public void setGiaTien(double giaTien) {
+        this.giaTien = giaTien;
     }
 
-    public int getSoluong() {
-        return soluong;
+    public int getSoLuong() {
+        return soLuong;
     }
 
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
-    public String getImage() {
-        return image;
+
+//    public long getGiaTien() {
+//        return giaTien;
+//    }
+//
+//    public void setGiaTien(long giaTien) {
+//        this.giaTien = giaTien;
+//    }
+//
+//    public long getSoLuong() {
+//        return soLuong;
+//    }
+//
+//    public void setSoLuong(long soLuong) {
+//        this.soLuong = soLuong;
+//    }
+
+    public String getAnh() {
+        return anh;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setAnh(String anh) {
+        this.anh = anh;
     }
 
-    public String getDiachi() {
-        return diachi;
+    public String getDiaChi() {
+        return diaChi;
     }
 
-    public void setDiachi(String diachi) {
-        this.diachi = diachi;
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
     public String getMota() {
@@ -112,11 +149,51 @@ public class Food {
         this.matheloai = matheloai;
     }
 
-    public String getIdstore() {
-        return idstore;
+    public String getIdCuaHang() {
+        return idCuaHang;
     }
 
-    public void setIdstore(String idstore) {
-        this.idstore = idstore;
+    public void setIdCuaHang(String idCuaHang) {
+        this.idCuaHang = idCuaHang;
+    }
+
+    public String getIdDanhMuc() {
+        return idDanhMuc;
+    }
+
+    public void setIdDanhMuc(String idDanhMuc) {
+        this.idDanhMuc = idDanhMuc;
+    }
+
+    public String getIdSanPham() {
+        return idSanPham;
+    }
+
+    public void setIdSanPham(String idSanPham) {
+        this.idSanPham = idSanPham;
+    }
+
+    public String getKhuyenMai() {
+        return khuyenMai;
+    }
+
+    public void setKhuyenMai(String khuyenMai) {
+        this.khuyenMai = khuyenMai;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public String getTokenstore() {
+        return tokenstore;
+    }
+
+    public void setTokenstore(String tokenstore) {
+        this.tokenstore = tokenstore;
     }
 }

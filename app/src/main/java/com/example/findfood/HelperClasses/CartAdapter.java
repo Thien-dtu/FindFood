@@ -61,17 +61,17 @@ final DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getInstance(Loc
 final Order cart = cartList.get(position);
         localStorage = new LocalStorage(context);
         gson = new Gson();
-        holder.title.setText(cart.getFood().getNamefood());
+        holder.title.setText(cart.getFood().getTenSanPham());
         holder.attribute.setText(cart.getFood().getMatheloai());
 
         holder.quantity.setText(String.valueOf(decimalFormat.format(cart.getSoluongmua())));
-        holder.price.setText(String.valueOf(decimalFormat.format(cart.getFood().getGia())));
+        holder.price.setText(String.valueOf(decimalFormat.format(cart.getFood().getGiaTien())));
 
-        _subtotal = String.valueOf(decimalFormat.format(cart.getSoluongmua() * cart.getFood().getGia()));
+        _subtotal = String.valueOf(decimalFormat.format(cart.getSoluongmua() * cart.getFood().getGiaTien()));
 
         holder.subTotal.setText(_subtotal);
         Picasso.get()
-        .load(cart.getFood().getImage())
+        .load(cart.getFood().getAnh())
         .into(holder.imageView, new Callback() {
 @Override
 public void onSuccess() {

@@ -3,48 +3,41 @@ package com.example.findfood.model;
 import java.util.ArrayList;
 
 public class HDCT {
-    private String idhct;
-    private String idhdon;
+    private String idHDCT;
+    private String idHoaDon;
     String ngay;
     String thoigian;
     boolean check;
-    String uiduser;
+    String idUser;
     ArrayList<Order> orderArrayList;
+
     public HDCT() {
     }
 
-    public HDCT(String idhct, String idhdon, String ngay, String thoigian, boolean check, String uiduser, ArrayList<Order> orderArrayList) {
-        this.idhct = idhct;
-        this.idhdon = idhdon;
+    public HDCT(String idHDCT, String idHoaDon, String ngay, String thoigian, boolean check, String idUser, ArrayList<Order> orderArrayList) {
+        this.idHDCT = idHDCT;
+        this.idHoaDon = idHoaDon;
         this.ngay = ngay;
         this.thoigian = thoigian;
         this.check = check;
-        this.uiduser = uiduser;
+        this.idUser = idUser;
         this.orderArrayList = orderArrayList;
     }
 
-    public String getUiduser() {
-        return uiduser;
+    public String getIdHDCT() {
+        return idHDCT;
     }
 
-    public void setUiduser(String uiduser) {
-        this.uiduser = uiduser;
+    public void setIdHDCT(String idHDCT) {
+        this.idHDCT = idHDCT;
     }
 
-    public String getIdhct() {
-        return idhct;
+    public String getIdHoaDon() {
+        return idHoaDon;
     }
 
-    public void setIdhct(String idhct) {
-        this.idhct = idhct;
-    }
-
-    public String getIdhdon() {
-        return idhdon;
-    }
-
-    public void setIdhdon(String idhdon) {
-        this.idhdon = idhdon;
+    public void setIdHoaDon(String idHoaDon) {
+        this.idHoaDon = idHoaDon;
     }
 
     public String getNgay() {
@@ -71,6 +64,14 @@ public class HDCT {
         this.check = check;
     }
 
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
     public ArrayList<Order> getOrderArrayList() {
         return orderArrayList;
     }
@@ -78,9 +79,4 @@ public class HDCT {
     public void setOrderArrayList(ArrayList<Order> orderArrayList) {
         this.orderArrayList = orderArrayList;
     }
-
-
-
-
-
 }

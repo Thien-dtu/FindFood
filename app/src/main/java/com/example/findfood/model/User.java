@@ -8,24 +8,26 @@ public class User {
     private String phone;
     private String image;
     private String diachi;
-    private String ngaysinh;
-    private String gioitinh;
+    private String ngaySinh;
+    private String gioiTinh;
     String token;
+    private String trangThai;
 
     public User(){
 
     }
 
-    public User(String email, String password, String name, String phone, String image, String diachi, String ngaysinh, String gioitinh, String token) {
+    public User(String email, String password, String name, String phone, String image, String diachi, String ngaySinh, String gioiTinh, String token, String trangThai) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.image = image;
         this.diachi = diachi;
-        this.ngaysinh = ngaysinh;
-        this.gioitinh = gioitinh;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
         this.token = token;
+        this.trangThai = trangThai;
     }
 
     public String getEmail() {
@@ -76,18 +78,20 @@ public class User {
         this.diachi = diachi;
     }
 
-    public String getNgaysinh() {
-        return ngaysinh;
+    public String getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setNgaysinh(String ngaysinh) {
-        this.ngaysinh = ngaysinh;
+    public void setNgaySinh(String ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
-    public String getGioitinh() { return gioitinh; }
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
 
-    public void setGioitinh(String gioitinh) {
-        this.gioitinh = gioitinh;
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
     public String getToken() {
@@ -96,5 +100,13 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
     }
 }

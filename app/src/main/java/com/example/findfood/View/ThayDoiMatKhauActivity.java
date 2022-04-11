@@ -92,8 +92,8 @@ public class ThayDoiMatKhauActivity extends AppCompatActivity {
                                 diachi = dataUser.get(i).getDiachi();
                                 mail = dataUser.get(i).getEmail();
                                 anh = dataUser.get(i).getImage();
-                                gioitinh = dataUser.get(i).getGioitinh();
-                                ngaysinh = dataUser.get(i).getNgaysinh();
+                                gioitinh = dataUser.get(i).getGioiTinh();
+                                ngaysinh = dataUser.get(i).getNgaySinh();
 
 
                                 if (edtpassnew.getText().toString().trim().equalsIgnoreCase(edtoldpass.getText().toString().trim())){
@@ -103,7 +103,7 @@ public class ThayDoiMatKhauActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "Password Xác nhận phải trùng Với Password mới", Toast.LENGTH_SHORT).show();
                                     } else {
 
-                                        User user = new User(mail,edtpassnew.getText().toString().trim(),name,phone,anh,diachi,ngaysinh,gioitinh,firebaseUser.getUid());
+                                        User user = new User(mail,edtpassnew.getText().toString().trim(),name,phone,anh,diachi,ngaysinh,gioitinh,firebaseUser.getUid(),"true");
                                         databaseUser.update(user);
                                         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                                         String newPassword = edtpassnew.getText().toString().trim();

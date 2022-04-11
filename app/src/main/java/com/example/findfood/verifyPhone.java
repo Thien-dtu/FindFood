@@ -93,7 +93,7 @@ public class verifyPhone extends AppCompatActivity {
                                     if(task.isSuccessful()){
 
                                         DatabaseUser = new DatabaseUser(getApplicationContext());
-                                        User user = new User(null,null,null,"0"+phone,null,null,null,null,firebaseAuth.getUid());
+                                        User user = new User(null,null,null,"0"+phone,null,null,null,null,firebaseAuth.getUid(), "true");
                                         DatabaseUser.insert(user);
 
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);

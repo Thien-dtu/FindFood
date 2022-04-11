@@ -46,7 +46,7 @@ public class GiaoDichActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     HDCT hdct = dataSnapshot.getValue(HDCT.class);
-                    if (hdct.getUiduser().equalsIgnoreCase(user.getUid())){
+                    if (hdct.getIdUser().equalsIgnoreCase(user.getUid())){
                         hdctArrayList.add(hdct);
                         xacnhanAdapter = new XacNhanAdapter(hdctArrayList,GiaoDichActivity.this);
                         rcvxacnhan.setAdapter(xacnhanAdapter);

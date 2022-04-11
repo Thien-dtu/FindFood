@@ -74,10 +74,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
         Categories categories = categoryList.get(position);
-        holder.title.setText(categories.getTentheloai());
+        holder.title.setText(categories.getTenDanhMuc());
 
         Picasso.get()
-                .load(categories.getImage())
+                .load(categories.getAnh())
                 .into(holder.imageView, new Callback() {
                     @Override
                     public void onSuccess() {

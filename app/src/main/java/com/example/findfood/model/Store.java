@@ -6,46 +6,28 @@ public class Store {
     private String name;
     private String phone;
     private String image;
-    private String diachi;
+    private String diaChi;
     private String status;
+    private String tenCuaHang;
     private String tokenstore;
+    private String thoiGianMoCua;
+    private String thoiGianDongCua;
 
     public Store() {
     }
 
-    public Store(String email, String pass, String name, String phone, String image, String diachi, String status, String tokenstore) {
+    public Store(String email, String pass, String name, String phone, String image, String diaChi, String status, String tenCuaHang, String tokenstore, String thoiGianMoCua, String thoiGianDongCua) {
         this.email = email;
         this.pass = pass;
         this.name = name;
         this.phone = phone;
         this.image = image;
-        this.diachi = diachi;
+        this.diaChi = diaChi;
         this.status = status;
+        this.tenCuaHang = tenCuaHang;
         this.tokenstore = tokenstore;
-    }
-
-    public String getTokenstore() {
-        return tokenstore;
-    }
-
-    public void setTokenstore(String tokenstore) {
-        this.tokenstore = tokenstore;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDiachi() {
-        return diachi;
-    }
-
-    public void setDiachi(String diachi) {
-        this.diachi = diachi;
+        this.thoiGianMoCua = thoiGianMoCua;
+        this.thoiGianDongCua = thoiGianDongCua;
     }
 
     public String getEmail() {
@@ -86,5 +68,53 @@ public class Store {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTenCuaHang() {
+        return tenCuaHang;
+    }
+
+    public void setTenCuaHang(String tenCuaHang) {
+        this.tenCuaHang = tenCuaHang;
+    }
+
+    public String getTokenstore() {
+        return tokenstore;
+    }
+
+    public void setTokenstore(String tokenstore) {
+        this.tokenstore = tokenstore;
+    }
+
+    public String getThoiGianMoCua() {
+        return thoiGianMoCua;
+    }
+
+    public void setThoiGianMoCua(String thoiGianMoCua) {
+        this.thoiGianMoCua = thoiGianMoCua;
+    }
+
+    public String getThoiGianDongCua() {
+        return thoiGianDongCua;
+    }
+
+    public void setThoiGianDongCua(String thoiGianDongCua) {
+        this.thoiGianDongCua = thoiGianDongCua;
     }
 }

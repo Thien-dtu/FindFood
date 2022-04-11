@@ -62,7 +62,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
 
     public class MyViewHolder1 extends RecyclerView.ViewHolder {
         ImageView imageView, likeBtn;
-        TextView title, txtdiachi, txtgia;
+        TextView title, txtdiachi, txtgia, txtTrangThai;
         ProgressBar progressBar;
         CardView cardView, cardView1, card_view4, vien, cardview_Nhan;
         LinearLayout khung;
@@ -77,6 +77,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
             txtgia = itemView.findViewById(R.id.txtgia);
             khung = itemView.findViewById(R.id.khung);
             vien = itemView.findViewById(R.id.vien);
+            txtTrangThai = itemView.findViewById(R.id.txtTrangThai);
             likeBtn = itemView.findViewById(R.id.likeBtn);
             cardview_Nhan = itemView.findViewById(R.id.cardview_Nhan);
         }
@@ -97,17 +98,17 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
         final DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         decimalFormat.applyPattern("#,###,###,###");
         Food categories = categoryList.get(position);
-        holder.title.setText(categories.getNamefood());
-        holder.txtdiachi.setText(categories.getDiachi());
+        holder.title.setText(categories.getTenSanPham());
+        holder.txtdiachi.setText(categories.getDiaChi());
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseFood = new DatabaseFood(context);
         fvrtref = FirebaseDatabase.getInstance().getReference("favourites");
         fvrt_listRef = FirebaseDatabase.getInstance().getReference("favoriteList").child(user.getUid());
 
 
-        holder.txtgia.setText(String.valueOf(decimalFormat.format(categories.getGia()) + " VNĐ"));
+        holder.txtgia.setText(String.valueOf(decimalFormat.format(categories.getGiaTien()) + " VNĐ"));
         Picasso.get()
-                .load(categories.getImage())
+                .load(categories.getAnh())
                 .into(holder.imageView, new Callback() {
                     @Override
                     public void onSuccess() {
@@ -164,16 +165,24 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                i.putExtra("img", categories.getImage());
-                i.putExtra("gia", decimalFormat.format(categories.getGia()) + "\t VNĐ");
-                i.putExtra("namefood", categories.getNamefood());
+                i.putExtra("img", categories.getAnh());
+                i.putExtra("gia", decimalFormat.format(categories.getGiaTien()) + "\t VNĐ");
+                i.putExtra("namefood", categories.getTenSanPham());
                 i.putExtra("idfood", "Id: " + categories.getIdfood());
-                i.putExtra("idstore", categories.getIdstore());
-                i.putExtra("diachi", categories.getDiachi());
-                i.putExtra("sl", categories.getSoluong() + "");
+                i.putExtra("idstore", categories.getIdCuaHang());
+                i.putExtra("diachi", categories.getDiaChi());
+                i.putExtra("sl", categories.getSoLuong() + "");
                 i.putExtra("matl", categories.getMatheloai());
                 i.putExtra("status", categories.getStatus());
                 i.putExtra("mota", categories.getMota());
+                if (categories.getTrangThai() == "true") {
+                    i.putExtra("trangThai", "Còn Hàng");
+                } else {
+                    i.putExtra("trangThai", "Hết Hàng");
+                }
+                i.putExtra("khuyenMai", categories.getKhuyenMai());
+                i.putExtra("idSanPham", categories.getIdSanPham());
+                i.putExtra("idDanhMuc", categories.getIdDanhMuc());
                 i.putExtra("tokenstore", categories.getTokenstore());
 //                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 

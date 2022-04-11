@@ -185,7 +185,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                 GoogleSignInAccount account = signInResult.getSignInAccount();
 
                 DatabaseUser = new DatabaseUser(getApplicationContext());
-                User user = new User(account.getEmail(),null,account.getDisplayName(),null,null,null,null,null,firebaseAuth.getUid());
+                User user = new User(account.getEmail(),null,account.getDisplayName(),null,null,null,null,null,firebaseAuth.getUid(), "true");
                 DatabaseUser.insert(user);
 
                 String tokenID =account.getIdToken();
@@ -242,7 +242,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     for (int i = 0; i < datastore.size(); i++) {
-                        if (datastore.get(i).getEmail().equalsIgnoreCase(email.toString()) && datastore.get(i).getPassword().equalsIgnoreCase(password.toString())) {
+                        if (datastore.get(i).getEmail().equalsIgnoreCase(email.toString()) && datastore.get(i).getPassword().equalsIgnoreCase(password.toString()) && datastore.get(i).getTrangThai().equalsIgnoreCase("true")) {
                             Toast.makeText(getApplicationContext(), "Đăng Nhập Thành Công", Toast.LENGTH_SHORT).show();
                             Intent is = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(is);
@@ -257,18 +257,6 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                 }
             }
         });
-//                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//            @Override
-//            public void onSuccess(AuthResult authResult) {
-//                Toast.makeText(DangNhapActivity.this, getString(R.string.dangNhapThanhCong), Toast.LENGTH_LONG).show();
-//                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(DangNhapActivity.this,R.string.dangnhapthatbai,Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
     /*-------------------- END đăng nhập bằng email, password --------------------*/
@@ -323,7 +311,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         if(user !=null){
             Intent intent = new Intent(DangNhapActivity.this, MainActivity.class);
             startActivity(intent);
-        };
+        }
     }
 
     /*-------------------- END kiểm tra sự kiện người dùng đăng nhập, đăng xuất --------------------*/

@@ -124,11 +124,11 @@ public class XacNhanAdapter extends RecyclerView.Adapter<XacNhanAdapter.MyViewHo
                         double tongtien1 =0;
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                             HDCT hdct = dataSnapshot.getValue(HDCT.class);
-                            if (hdct.getIdhct().equalsIgnoreCase(cart.getIdhct())){
+                            if (hdct.getIdHDCT().equalsIgnoreCase(cart.getIdHDCT())){
                                 orderArrayList.addAll(hdct.getOrderArrayList());
 
                                 for (Order order : orderArrayList){
-                                    tongtien1 += order.getSoluongmua() * order.getFood().getGia();
+                                    tongtien1 += order.getSoluongmua() * order.getFood().getGiaTien();
 //                                    tokkenstore = order.getStore().getEmail();
                                     tokkenstore = "test1@gmail.com";
                                 }

@@ -113,8 +113,8 @@ public class EditProfile extends AppCompatActivity {
                         phone = lists.get(i).getPhone();
                         pass = lists.get(i).getPassword();
                         anh = lists.get(i).getImage();
-                        ngaysinh = lists.get(i).getNgaysinh();
-                        gioitinh = lists.get(i).getGioitinh();
+                        ngaysinh = lists.get(i).getNgaySinh();
+                        gioitinh = lists.get(i).getGioiTinh();
                     }
                 }
                 edtaddress.setText(diachi);
@@ -215,9 +215,10 @@ public class EditProfile extends AppCompatActivity {
                         store.setDiachi(edtaddress.getText().toString());
                         store.setPassword(pass);
                         store.setDiachi(edtaddress.getText().toString());
-                        store.setNgaysinh(edtNgaySinh.getText().toString());
-                        store.setGioitinh(txtGioiTinh.getText().toString());
+                        store.setNgaySinh(edtNgaySinh.getText().toString());
+                        store.setGioiTinh(txtGioiTinh.getText().toString());
                         store.setImage(anh);
+                        store.setTrangThai("True");
                         store.setToken(firebaseUser.getUid());
                         databaseUser = new DatabaseUser(getApplicationContext());
                         databaseUser.update(store);
@@ -277,10 +278,11 @@ public class EditProfile extends AppCompatActivity {
                         store.setName(edtname.getText().toString());
                         store.setPhone(edtphone.getText().toString());
                         store.setDiachi(edtaddress.getText().toString());
-                        store.setNgaysinh(edtNgaySinh.getText().toString());
-                        store.setGioitinh(txtGioiTinh.getText().toString());
+                        store.setNgaySinh(edtNgaySinh.getText().toString());
+                        store.setGioiTinh(txtGioiTinh.getText().toString());
                         store.setImage(uri.toString());
                         store.setPassword(pass);
+                        store.setTrangThai("True");
                         store.setToken(firebaseUser.getUid());
                         databaseUser = new DatabaseUser(getApplicationContext());
                         databaseUser.update(store);

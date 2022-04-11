@@ -55,11 +55,11 @@ public class FoodProfileAdapter extends RecyclerView.Adapter<FoodProfileAdapter.
         final DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getInstance(Locale.US);
         decimalFormat.applyPattern("#,###,###,###");
         Food categories = categoryList.get(position);
-        holder.title.setText(categories.getNamefood());
-        holder.txtdiachi.setText(categories.getDiachi());
-        holder.txtgia.setText(String.valueOf(decimalFormat.format(categories.getGia())+" VNĐ"));
+        holder.title.setText(categories.getTenSanPham());
+        holder.txtdiachi.setText(categories.getDiaChi());
+        holder.txtgia.setText(String.valueOf(decimalFormat.format(categories.getGiaTien())+" VNĐ"));
         Picasso.get()
-                .load(categories.getImage())
+                .load(categories.getAnh())
                 .into(holder.imageView, new Callback() {
                     @Override
                     public void onSuccess() {
@@ -80,13 +80,13 @@ public class FoodProfileAdapter extends RecyclerView.Adapter<FoodProfileAdapter.
             public void onClick(View v) {
                 Intent intent = new Intent(context, FoodProfileActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("img", categories.getImage());
-                intent.putExtra("gia", decimalFormat.format(categories.getGia())+"\t VNĐ");
-                intent.putExtra("namefood", categories.getNamefood());
+                intent.putExtra("img", categories.getAnh());
+                intent.putExtra("gia", decimalFormat.format(categories.getGiaTien())+"\t VNĐ");
+                intent.putExtra("namefood", categories.getTenSanPham());
                 intent.putExtra("idfood","Id: "+categories.getIdfood());
-                intent.putExtra("idstore",categories.getIdstore());
-                intent.putExtra("diachi",categories.getDiachi());
-                intent.putExtra("sl",categories.getSoluong()+"");
+                intent.putExtra("idstore",categories.getIdCuaHang());
+                intent.putExtra("diachi",categories.getDiaChi());
+                intent.putExtra("sl",categories.getSoLuong()+"");
                 intent.putExtra("matl",categories.getMatheloai());
                 intent.putExtra("status",categories.getStatus());
                 intent.putExtra("mota",categories.getMota());

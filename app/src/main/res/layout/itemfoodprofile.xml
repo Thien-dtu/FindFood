@@ -7,7 +7,7 @@
     android:id="@+id/cardview1"
     app:cardCornerRadius="8dp"
     android:layout_marginBottom="28dp"
-    android:layout_height="190dp">
+    android:layout_height="220dp">
     <LinearLayout
         android:layout_width="150dp"
         android:orientation="vertical"
@@ -51,6 +51,18 @@
             android:fontFamily="sans-serif-condensed-light"
             android:text="Địa điểm"
             android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtTrangThai"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:paddingLeft="5dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="Còn Hàng"
+            android:textColor="#ff0000"
+            android:layout_height="wrap_content"/>
+
         <TextView
             android:id="@+id/txtgia"
             android:layout_width="wrap_content"

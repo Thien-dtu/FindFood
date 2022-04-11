@@ -55,7 +55,7 @@ import java.util.Map;
 import static com.example.findfood.MainActivity.emailuser;
 
 public class FoodProfileActivity extends AppCompatActivity {
-    TextView tv_detail_rating, tv_detail_release_date, tvsl, tv_detail_vote_count, txtsoluong, txtdiachi, txtmota, txtstatus, txtmatl;
+    TextView tv_detail_rating, tv_detail_release_date, tvsl, tv_detail_vote_count, txtsoluong, txtdiachi, txtmota, txtstatus, txtmatl, txtTrangThai;
     Toolbar toolbar;
     ImageView iv_backdrop, iv_detail_poster;
     int vohan = 0;
@@ -134,6 +134,8 @@ public class FoodProfileActivity extends AppCompatActivity {
         // Khai báo mã thể loại sản phẩm : " Sáng, trưa, chiều " ở layout/ activity_food_profile
         txtmatl = findViewById(R.id.txtmatl);
 
+        txtTrangThai = findViewById(R.id.txtTrangThai);
+
         // Khai báo toolbar ở layout/ activity_food_profile
         toolbar = findViewById(R.id.toolbar);
 
@@ -160,6 +162,7 @@ public class FoodProfileActivity extends AppCompatActivity {
         txtmatl.setText("Loại:\t" + intent.getStringExtra("matl"));
         txtstatus.setText("Trạng Thái:\t" + intent.getStringExtra("status"));
         txtmota.setText("Mô Tả:\t" + intent.getStringExtra("mota"));
+        txtTrangThai.setText(intent.getStringExtra("trangThai"));
         tv_detail_vote_count.setText("đăng bởi@" + intent.getStringExtra("idstore"));
         databaseFood = new DatabaseFood(FoodProfileActivity.this);
         foodArrayList = new ArrayList<>();
@@ -250,7 +253,7 @@ public class FoodProfileActivity extends AppCompatActivity {
 
                     try {
                         for (Order hdct : orderArrayList) {
-                            showtien =  hdct.getSoluongmua() * hdct.getFood().getGia();
+                            showtien =  hdct.getSoluongmua() * hdct.getFood().getGiaTien();
                         }
                         btn_insertcart.setText("THÊM VÀO GIỎ HÀNG -\t" + decimalFormat.format(showtien) + "\tVNĐ");
                     } catch (Exception e) {
@@ -306,7 +309,7 @@ public class FoodProfileActivity extends AppCompatActivity {
 
                     try {
                         for (Order hdct1 : orderArrayList) {
-                            showtien = hdct1.getSoluongmua() * hdct1.getFood().getGia();
+                            showtien = hdct1.getSoluongmua() * hdct1.getFood().getGiaTien();
                         }
                         btn_insertcart.setText("THÊM VÀO GIỎ HÀNG -\t" + decimalFormat.format(showtien) + "\tVNĐ");
                     } catch (Exception e) {
@@ -375,7 +378,7 @@ public class FoodProfileActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Food> lists) {
                 foodArrayList.clear();
                 for (int i = 0; i < lists.size(); i++) {
-                    if (lists.get(i).getIdstore() != null && lists.get(i).getIdstore().equalsIgnoreCase(idstore)) {
+                    if (lists.get(i).getIdCuaHang() != null && lists.get(i).getIdCuaHang().equalsIgnoreCase(idstore)) {
                         foodArrayList.add(lists.get(i));
                         foodAdapter.notifyDataSetChanged();
                     }

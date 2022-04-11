@@ -34,7 +34,7 @@ public class DangKyActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
     public EditText edtHoTen,edtEmail,edtPass,edtConfPass,edtDate,edtPhone;
     RadioButton rdbNam, rdbNu, rdbKhac;
-    String gioitinh = "";
+    String gioiTinh = "";
     Button btnDangKy;
     TextView btnDangNhap;
     public ImageButton buttonDate;
@@ -136,13 +136,13 @@ public class DangKyActivity extends AppCompatActivity {
                 }
 
                 if (rdbNam.isChecked()){
-                    gioitinh = "Nam";
+                    gioiTinh = "Nam";
                 }
                 if (rdbNu.isChecked()){
-                    gioitinh = "Nữ";
+                    gioiTinh = "Nữ";
                 }
                 if (rdbKhac.isChecked()) {
-                    gioitinh = "Khác";
+                    gioiTinh = "Khác";
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
@@ -158,7 +158,7 @@ public class DangKyActivity extends AppCompatActivity {
                                 } else {
 
                                     DatabaseUser = new DatabaseUser(getApplicationContext());
-                                    User user = new User(email,password,hoten,phone,null,null,ngaysinh,gioitinh,mAuth.getUid());
+                                    User user = new User(email,password,hoten,phone,null,null,ngaysinh,gioiTinh,mAuth.getUid(), "true");
 
                                     DatabaseUser.insert(user);
                                     progressBar.setVisibility(View.INVISIBLE);

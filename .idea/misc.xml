@@ -34,7 +34,7 @@
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/activity_trang_ca_nhan.xml" value="0.19375" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/item_chat.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/itemfood.xml" value="0.22447916666666667" />
-        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/itemfoodprofile.xml" value="0.22447916666666667" />
+        <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/itemfoodprofile.xml" value="0.75" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/layout_connection_problem.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/list_item_review.xml" value="0.22447916666666667" />
         <entry key="..\:/D/CDIO-3/FindFood/app/src/main/res/layout/row_cart.xml" value="0.25" />
@@ -49,7 +49,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="16" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

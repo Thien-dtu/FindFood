@@ -154,7 +154,7 @@ public class ThanhToanActivity extends AppCompatActivity {
             rcvcart.setLayoutManager(linearLayoutManager);
             rcvcart.setAdapter(cartAdapter);
             for (Order order: getCartList()){
-                tongtien = tongtien+order.getSoluongmua() * order.getFood().getGia();
+                tongtien = tongtien+order.getSoluongmua() * order.getFood().getGiaTien();
             }
 
             txttientong.setText(decimalFormat.format(tongtien)+" VNĐ");
@@ -165,7 +165,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                     for (HDCT hdct: hdctArrayList){
 
                         daoHDCT.insert(hdct);
-                        sendNotifiaction(namestore,nameuser,"Xác nhận đơn hàng",user.getUid(),hdct.getIdhct());
+                        sendNotifiaction(namestore,nameuser,"Xác nhận đơn hàng",user.getUid(),hdct.getIdHDCT());
                     }
                     localstorage.deleteCart();
                     rcvcart.setVisibility(View.GONE);
