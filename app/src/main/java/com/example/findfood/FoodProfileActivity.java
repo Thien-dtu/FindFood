@@ -63,6 +63,7 @@ public class FoodProfileActivity extends AppCompatActivity {
     String idfood = "";
     DatabaseFood databaseFood;
     ArrayList<Food> foodArrayList;
+    ArrayList<Food> categoryList;
     ArrayList<Food> dsfoodall = new ArrayList<>();
     ArrayList<Order> orderArrayList = new ArrayList<>();
     ArrayList<Store> storeArrayList = new ArrayList<>();
@@ -134,7 +135,7 @@ public class FoodProfileActivity extends AppCompatActivity {
         // Khai báo mã thể loại sản phẩm : " Sáng, trưa, chiều " ở layout/ activity_food_profile
         txtmatl = findViewById(R.id.txtmatl);
 
-        txtTrangThai = findViewById(R.id.txtTrangThai);
+        txtTrangThai = findViewById(R.id.txtTrangthaiActivityFoodProfile);
 
         // Khai báo toolbar ở layout/ activity_food_profile
         toolbar = findViewById(R.id.toolbar);
@@ -160,10 +161,10 @@ public class FoodProfileActivity extends AppCompatActivity {
         txtdiachi.setText("Địa Chỉ:\t" + intent.getStringExtra("diachi"));
         txtsoluong.setText("Số Lượng:\t" + intent.getStringExtra("sl"));
         txtmatl.setText("Loại:\t" + intent.getStringExtra("matl"));
-        txtstatus.setText("Trạng Thái:\t" + intent.getStringExtra("status"));
+        txtstatus.setText("Buổi:\t" + intent.getStringExtra("status"));
         txtmota.setText("Mô Tả:\t" + intent.getStringExtra("mota"));
-        txtTrangThai.setText(intent.getStringExtra("trangThai"));
-        tv_detail_vote_count.setText("đăng bởi@" + intent.getStringExtra("idstore"));
+        txtTrangThai.setText("Trạng Thái:\t" + intent.getStringExtra("trangThai"));
+        tv_detail_vote_count.setText("Đăng bởi@" + intent.getStringExtra("idstore"));
         databaseFood = new DatabaseFood(FoodProfileActivity.this);
         foodArrayList = new ArrayList<>();
         foodAdapter = new FoodProfileAdapter(foodArrayList, FoodProfileActivity.this);

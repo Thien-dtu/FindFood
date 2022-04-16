@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.findfood.DangKyActivity;
 import com.example.findfood.DangNhapActivity;
 import com.example.findfood.HelperClasses.SliderAdapter;
+import com.example.findfood.MainActivity;
 import com.example.findfood.R;
 import com.example.findfood.Common.begin;
 import com.example.findfood.model.ScreenItem;
@@ -146,7 +147,7 @@ public class intro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Mở màn hình đăng nhập
-                Intent mainActivity = new Intent(getApplicationContext(), DangNhapActivity.class);
+                Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainActivity);
                 // Lưu lại biến boolean vào bộ nhớ để lần sau khi người dùng mở app
                 // Chúng ta sẽ biết họ đã vào introActivity rồi

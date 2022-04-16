@@ -80,7 +80,7 @@ import java.util.Map;
 
 import static com.example.findfood.MainActivity.emailuser;
 
-public class ThanhToanActivity extends AppCompatActivity {
+public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAuth.AuthStateListener {
     RecyclerView rcvcart;
     CartAdapter cartAdapter =null;
     ArrayList<HDCT> hdctArrayList;
@@ -161,6 +161,8 @@ public class ThanhToanActivity extends AppCompatActivity {
             btnthanhtoan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+
                     daoHDCT = new DatabaseHDCT(ThanhToanActivity.this);
                     for (HDCT hdct: hdctArrayList){
 
@@ -275,5 +277,14 @@ public class ThanhToanActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user ==null){
+            Intent intent = new Intent(ThanhToanActivity.this, DangNhapActivity.class);
+            startActivity(intent);
+        }
     }
 }

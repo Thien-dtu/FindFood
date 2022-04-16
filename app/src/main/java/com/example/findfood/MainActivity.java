@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         });
 
         Date currentTime = Calendar.getInstance().getTime();
-        if (currentTime.getHours() < 12) {
+        if (currentTime.getHours() < 14) {
             txtslogan.setText("Bạn Muốn Ăn Gì Sáng Nay ?");
             foodArrayList = new ArrayList<>();
             foodAdapter = new FoodAdapter(foodArrayList, getApplicationContext());

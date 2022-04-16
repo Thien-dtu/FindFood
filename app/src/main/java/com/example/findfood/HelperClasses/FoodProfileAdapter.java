@@ -57,6 +57,7 @@ public class FoodProfileAdapter extends RecyclerView.Adapter<FoodProfileAdapter.
         Food categories = categoryList.get(position);
         holder.title.setText(categories.getTenSanPham());
         holder.txtdiachi.setText(categories.getDiaChi());
+        holder.txtTrangThaiActivity.setText(categories.getTrangThai());
         holder.txtgia.setText(String.valueOf(decimalFormat.format(categories.getGiaTien())+" VNĐ"));
         Picasso.get()
                 .load(categories.getAnh())
@@ -89,6 +90,7 @@ public class FoodProfileAdapter extends RecyclerView.Adapter<FoodProfileAdapter.
                 intent.putExtra("sl",categories.getSoLuong()+"");
                 intent.putExtra("matl",categories.getMatheloai());
                 intent.putExtra("status",categories.getStatus());
+                intent.putExtra("trangThai", categories.getTrangThai());
                 intent.putExtra("mota",categories.getMota());
                 intent.putExtra("idfoodcheck",categories.getIdfood()+"");
                 intent.putExtra("tokenstore",categories.getTokenstore());
@@ -107,7 +109,7 @@ public class FoodProfileAdapter extends RecyclerView.Adapter<FoodProfileAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView title,txtdiachi,txtgia;
+        TextView title,txtdiachi,txtgia, txtTrangThaiActivity;
         ProgressBar progressBar;
         CardView cardView,cardView1,card_view4;
         LinearLayout line1;
@@ -121,6 +123,7 @@ public class FoodProfileAdapter extends RecyclerView.Adapter<FoodProfileAdapter.
             progressBar = itemView.findViewById(R.id.progressbar);
             txtdiachi = itemView.findViewById(R.id.txtdiachi);
             txtgia = itemView.findViewById(R.id.txtgia);
+            txtTrangThaiActivity = itemView.findViewById(R.id.txtTrangThaiActivity);
             line1 = itemView.findViewById(R.id.line1);
             cardView1 = itemView.findViewById(R.id.cardview1);
 

@@ -175,11 +175,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
                 i.putExtra("matl", categories.getMatheloai());
                 i.putExtra("status", categories.getStatus());
                 i.putExtra("mota", categories.getMota());
-                if (categories.getTrangThai() == "true") {
-                    i.putExtra("trangThai", "Còn Hàng");
-                } else {
-                    i.putExtra("trangThai", "Hết Hàng");
-                }
+                i.putExtra("trangThai", categories.getTrangThai());
                 i.putExtra("khuyenMai", categories.getKhuyenMai());
                 i.putExtra("idSanPham", categories.getIdSanPham());
                 i.putExtra("idDanhMuc", categories.getIdDanhMuc());

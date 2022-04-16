@@ -207,7 +207,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txtstatus"
                 tools:text="Release Date" />
             <TextView
-                android:id="@+id/txtTrangthai"
+                android:id="@+id/txtTrangthaiActivityFoodProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
