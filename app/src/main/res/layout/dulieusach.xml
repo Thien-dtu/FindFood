@@ -50,7 +50,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingStart="20dp"
-        android:background="#3e4042"
+        android:background="#fff"
         android:paddingEnd="20dp">
 
         <RelativeLayout
@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#3e4042"
+            android:background="#fff"
             android:gravity="center_vertical">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -147,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#3e4042"
+            android:background="#fff"
             android:gravity="center_vertical">
 
             <ImageView

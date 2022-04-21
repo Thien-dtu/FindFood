@@ -91,6 +91,7 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
     RelativeLayout linearbackground;
     DatabaseHDCT daoHDCT;
     DatabaseUser daoUser;
+    User userNode;
     Button btnthanhtoan;
     double tongtien=0;
     LinearLayout linearLayout;
@@ -133,9 +134,7 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
         user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("HDCT");
         String keyhdct = databaseReference.push().getKey();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyy", Locale.getDefault());
-        String currentDateandTime = sdf.format(new Date());
-        SimpleDateFormat tg = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat tg = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
         String thoigian = tg.format(new Date());
         hdctArrayList.clear();
 
@@ -145,7 +144,7 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
 //            namestore = "iwoqUrDrVJTzPEV82ly2nhqoHhC3";
             nameuser=  order.getUser().getEmail();
         }
-        HDCT hoadonchitiet = new HDCT(keyhdct,keyhdct,currentDateandTime,thoigian,false,user.getUid(),getCartList());
+        HDCT hoadonchitiet = new HDCT(keyhdct,keyhdct,thoigian,"pending",user.getUid(),getCartList(),userNode);
         hdctArrayList.add(hoadonchitiet);
             Log.i("size", String.valueOf(hdctArrayList.size()));
         if (getCartList().size() != 0){
@@ -281,10 +280,10 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
 
     @Override
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if(user ==null){
-            Intent intent = new Intent(ThanhToanActivity.this, DangNhapActivity.class);
-            startActivity(intent);
-        }
+//        FirebaseUser user = firebaseAuth.getCurrentUser();
+//        if(user ==null){
+//            Intent intent = new Intent(ThanhToanActivity.this, DangNhapActivity.class);
+//            startActivity(intent);
+//        }
     }
 }

@@ -5,17 +5,15 @@ public class Order {
     Food food;
     private int soluongmua;
     Store store;
-    User user;
 
     public Order() {
     }
 
-    public Order(String idorder, Food food, int soluongmua, Store store, User user) {
+    public Order(String idorder, Food food, int soluongmua, Store store) {
         this.idorder = idorder;
         this.food = food;
         this.soluongmua = soluongmua;
         this.store = store;
-        this.user = user;
     }
 
     public String getIdorder() {
@@ -48,13 +46,5 @@ public class Order {
 
     public void setStore(Store store) {
         this.store = store;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

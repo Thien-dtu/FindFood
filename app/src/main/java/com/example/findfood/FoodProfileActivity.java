@@ -59,6 +59,8 @@ public class FoodProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
     ImageView iv_backdrop, iv_detail_poster;
     int vohan = 0;
+
+    User userNodeFoodProfile;
     int sluongmua = 0;
     String idfood = "";
     DatabaseFood databaseFood;
@@ -225,7 +227,7 @@ public class FoodProfileActivity extends AppCompatActivity {
 
                         String idfoodcheck = idfood.substring(4);
                         int check = checkmahdct(orderArrayList, idfoodcheck);
-                        Order order = new Order(keyhdct, food, sluongmua_item, store, user);
+                        Order order = new Order(keyhdct, food, sluongmua_item, store);
                         Log.i("Check", String.valueOf(check));
                         if (check >= 0) {
                             int sluongmua = orderArrayList.get(check).getSoluongmua();
@@ -295,7 +297,7 @@ public class FoodProfileActivity extends AppCompatActivity {
                             break;
                         }
                     }
-                    Order orderminus = new Order(keyhdct, food, sluongmua_item, store, user);
+                    Order orderminus = new Order(keyhdct, food, sluongmua_item, store);
                     if (check1 >= 0) {
                         int sluongmua = orderArrayList.get(check1).getSoluongmua();
                         orderminus.setSoluongmua(sluongmua-1);

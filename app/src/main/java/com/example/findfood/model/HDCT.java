@@ -5,23 +5,23 @@ import java.util.ArrayList;
 public class HDCT {
     private String idHDCT;
     private String idHoaDon;
-    String ngay;
     String thoigian;
-    boolean check;
+    String check;
     String idUser;
     ArrayList<Order> orderArrayList;
+    User user;
 
     public HDCT() {
     }
 
-    public HDCT(String idHDCT, String idHoaDon, String ngay, String thoigian, boolean check, String idUser, ArrayList<Order> orderArrayList) {
+    public HDCT(String idHDCT, String idHoaDon, String thoigian, String check, String idUser, ArrayList<Order> orderArrayList, User user) {
         this.idHDCT = idHDCT;
         this.idHoaDon = idHoaDon;
-        this.ngay = ngay;
         this.thoigian = thoigian;
         this.check = check;
         this.idUser = idUser;
         this.orderArrayList = orderArrayList;
+        this.user = user;
     }
 
     public String getIdHDCT() {
@@ -40,14 +40,6 @@ public class HDCT {
         this.idHoaDon = idHoaDon;
     }
 
-    public String getNgay() {
-        return ngay;
-    }
-
-    public void setNgay(String ngay) {
-        this.ngay = ngay;
-    }
-
     public String getThoigian() {
         return thoigian;
     }
@@ -56,11 +48,11 @@ public class HDCT {
         this.thoigian = thoigian;
     }
 
-    public boolean isCheck() {
+    public String getCheck() {
         return check;
     }
 
-    public void setCheck(boolean check) {
+    public void setCheck(String check) {
         this.check = check;
     }
 
@@ -78,5 +70,13 @@ public class HDCT {
 
     public void setOrderArrayList(ArrayList<Order> orderArrayList) {
         this.orderArrayList = orderArrayList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

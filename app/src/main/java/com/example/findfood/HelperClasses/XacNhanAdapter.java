@@ -130,7 +130,8 @@ public class XacNhanAdapter extends RecyclerView.Adapter<XacNhanAdapter.MyViewHo
                                 for (Order order : orderArrayList){
                                     tongtien1 += order.getSoluongmua() * order.getFood().getGiaTien();
 //                                    tokkenstore = order.getStore().getEmail();
-                                    tokkenstore = "test1@gmail.com";
+//                                    tokkenstore = "test1@gmail.com";
+                                      tokkenstore = order.getStore().getEmail();
                                 }
 
 

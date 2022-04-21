@@ -17,6 +17,12 @@ public class User {
 
     }
 
+    public  User(String name, String phone, String image) {
+        this.name = name;
+        this.phone = phone;
+        this.image = image;
+    }
+
     public User(String email, String password, String name, String phone, String image, String diachi, String ngaySinh, String gioiTinh, String token, String trangThai) {
         this.email = email;
         this.password = password;
