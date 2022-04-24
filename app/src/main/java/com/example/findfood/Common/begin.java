@@ -43,7 +43,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class begin extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private static int SPLASH_TIME = 5000;
+    private static int SPLASH_TIME = 3000;
 
     ImageView backgroud_image;
     TextView taoBoi, txtVersion;

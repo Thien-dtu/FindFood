@@ -15,7 +15,7 @@ public class Food {
     private String idCuaHang;
     private String idDanhMuc;
     private String idSanPham;
-    private String khuyenMai;
+    private int khuyenMai;
     private String trangThai;
     private String tokenstore;
 
@@ -24,7 +24,7 @@ public class Food {
     public Food() {
     }
 
-    public Food(String idfood, String tenSanPham, double giaTien, int soLuong, String anh, String diaChi, String mota, String status, String matheloai, String idCuaHang, String idDanhMuc, String idSanPham, String khuyenMai, String trangThai, String tokenstore) {
+    public Food(String idfood, String tenSanPham, double giaTien, int soLuong, String anh, String diaChi, String mota, String status, String matheloai, String idCuaHang, String idDanhMuc, String idSanPham, int khuyenMai, String trangThai, String tokenstore) {
         this.idfood = idfood;
         this.tenSanPham = tenSanPham;
         this.giaTien = giaTien;
@@ -92,23 +92,6 @@ public class Food {
         this.soLuong = soLuong;
     }
 
-
-//    public long getGiaTien() {
-//        return giaTien;
-//    }
-//
-//    public void setGiaTien(long giaTien) {
-//        this.giaTien = giaTien;
-//    }
-//
-//    public long getSoLuong() {
-//        return soLuong;
-//    }
-//
-//    public void setSoLuong(long soLuong) {
-//        this.soLuong = soLuong;
-//    }
-
     public String getAnh() {
         return anh;
     }
@@ -173,11 +156,11 @@ public class Food {
         this.idSanPham = idSanPham;
     }
 
-    public String getKhuyenMai() {
+    public int getKhuyenMai() {
         return khuyenMai;
     }
 
-    public void setKhuyenMai(String khuyenMai) {
+    public void setKhuyenMai(int khuyenMai) {
         this.khuyenMai = khuyenMai;
     }
 

@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/allfont_medium"
-        android:text="Nhanh - Tiện lợi - Dễ dàng"
+        android:text="Nhanh hơn - Tiện lợi - Dễ dàng"
         android:textColor="@color/cam"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"

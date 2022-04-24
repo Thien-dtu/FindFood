@@ -50,8 +50,11 @@ public class DatabaseHDCT {
         // push cây theo mã tự tạo
         // string key lấy mã push
         key = mRef.push().getKey();
+
+        HDCT hdctTest = new HDCT(key, key, item.getThoigian(), item.getCheck(), item.getIdUser(),item.getPayment(), item.getOrderArrayList());
+
         //insert theo child mã key setvalue theo item
-        mRef.child(key).setValue(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+        mRef.child(key).setValue(hdctTest).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(context, "Thanh Toán Thành Công", Toast.LENGTH_SHORT).show();

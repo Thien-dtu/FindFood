@@ -76,12 +76,7 @@ public class XacNhanAdapter extends RecyclerView.Adapter<XacNhanAdapter.MyViewHo
         daoUser = new DatabaseUser(context);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final HDCT cart = cartList.get(position);
-        if(cart.isCheck()){
-            holder.txtxacnhan.setText("Đã Xác Nhận");
-        }else{
-            holder.txtxacnhan.setText("Đang Xác Nhận");
-        }
-        holder.txtday.setText(cart.getNgay());
+        holder.txtxacnhan.setText(cart.getCheck());
         holder.txttime.setText(cart.getThoigian());
         holder.card_view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +126,7 @@ public class XacNhanAdapter extends RecyclerView.Adapter<XacNhanAdapter.MyViewHo
                                     tongtien1 += order.getSoluongmua() * order.getFood().getGiaTien();
 //                                    tokkenstore = order.getStore().getEmail();
 //                                    tokkenstore = "test1@gmail.com";
-                                      tokkenstore = order.getStore().getEmail();
+                                      tokkenstore = order.getFood().getIdCuaHang();
                                 }
 
 

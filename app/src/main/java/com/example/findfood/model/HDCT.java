@@ -8,20 +8,20 @@ public class HDCT {
     String thoigian;
     String check;
     String idUser;
+    String payment;
     ArrayList<Order> orderArrayList;
-    User user;
 
     public HDCT() {
     }
 
-    public HDCT(String idHDCT, String idHoaDon, String thoigian, String check, String idUser, ArrayList<Order> orderArrayList, User user) {
+    public HDCT(String idHDCT, String idHoaDon, String thoigian, String check, String idUser, String payment, ArrayList<Order> orderArrayList) {
         this.idHDCT = idHDCT;
         this.idHoaDon = idHoaDon;
         this.thoigian = thoigian;
         this.check = check;
         this.idUser = idUser;
+        this.payment = payment;
         this.orderArrayList = orderArrayList;
-        this.user = user;
     }
 
     public String getIdHDCT() {
@@ -64,19 +64,19 @@ public class HDCT {
         this.idUser = idUser;
     }
 
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
     public ArrayList<Order> getOrderArrayList() {
         return orderArrayList;
     }
 
     public void setOrderArrayList(ArrayList<Order> orderArrayList) {
         this.orderArrayList = orderArrayList;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

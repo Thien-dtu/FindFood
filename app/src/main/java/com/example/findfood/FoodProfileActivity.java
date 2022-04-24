@@ -227,7 +227,7 @@ public class FoodProfileActivity extends AppCompatActivity {
 
                         String idfoodcheck = idfood.substring(4);
                         int check = checkmahdct(orderArrayList, idfoodcheck);
-                        Order order = new Order(keyhdct, food, sluongmua_item, store);
+                        Order order = new Order(keyhdct, food, sluongmua_item, user);
                         Log.i("Check", String.valueOf(check));
                         if (check >= 0) {
                             int sluongmua = orderArrayList.get(check).getSoluongmua();
@@ -297,7 +297,7 @@ public class FoodProfileActivity extends AppCompatActivity {
                             break;
                         }
                     }
-                    Order orderminus = new Order(keyhdct, food, sluongmua_item, store);
+                    Order orderminus = new Order(keyhdct, food, sluongmua_item, userNodeFoodProfile);
                     if (check1 >= 0) {
                         int sluongmua = orderArrayList.get(check1).getSoluongmua();
                         orderminus.setSoluongmua(sluongmua-1);

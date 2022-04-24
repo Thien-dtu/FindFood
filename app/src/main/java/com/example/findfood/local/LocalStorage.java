@@ -2,6 +2,7 @@ package com.example.findfood.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class LocalStorage {
     SharedPreferences sharedPreferences;
@@ -19,6 +20,7 @@ public class LocalStorage {
 
 
     public void setCart(String cart) {
+        Log.d("PHHHHHH", cart);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("GioHang", cart);
         editor.commit();

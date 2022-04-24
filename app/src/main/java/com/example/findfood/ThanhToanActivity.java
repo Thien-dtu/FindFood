@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -85,9 +87,11 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
     CartAdapter cartAdapter =null;
     ArrayList<HDCT> hdctArrayList;
     LocalStorage localstorage;
+    RadioGroup rdbGroup;
+    RadioButton rdbTien, rdbNganHang;
     Gson gson;
     Toolbar toolbar;
-    TextView titletoolbar,txtaddress,txttientong;
+    TextView titletoolbar,txtaddress,txttientong,txtPayment;
     RelativeLayout linearbackground;
     DatabaseHDCT daoHDCT;
     DatabaseUser daoUser;
@@ -99,7 +103,7 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
     FirebaseUser user;
     ArrayList<Order> orderArrayList;
     private RequestQueue requestQueue;
-    String namefood,nameuser,namestore;
+    String namefood,nameuser,namestore, paymemt;
     int slm;
     double gia;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -117,6 +121,10 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
         txtaddress = findViewById(R.id.txtaddress);
         txttientong = findViewById(R.id.txttientong);
         btnthanhtoan = findViewById(R.id.btn_insertcart);
+        rdbGroup = findViewById(R.id.rdbGroup);
+        rdbTien = findViewById(R.id.rdbTien);
+        rdbNganHang = findViewById(R.id.rdbNganHang);
+        txtPayment = findViewById(R.id.txtPayment);
         linearbackground = findViewById(R.id.linearbackground);
         titletoolbar = findViewById(R.id.toolbar_title);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -137,14 +145,32 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
         SimpleDateFormat tg = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
         String thoigian = tg.format(new Date());
         hdctArrayList.clear();
+        Log.d("orderArrayList","Email" + orderArrayList.toString());
 
+        rdbTien.isChecked();
 
         for (Order order: getCartList()){
-            namestore =  order.getStore().getTokenstore();
+            namestore =  order.getFood().getTokenstore();
 //            namestore = "iwoqUrDrVJTzPEV82ly2nhqoHhC3";
-            nameuser=  order.getUser().getEmail();
+            Log.d("HA","Email" + order.getUser().toString());
+            if(order.getUser().getEmail() != null) {
+                nameuser = order.getUser().getEmail();
+            }
         }
-        HDCT hoadonchitiet = new HDCT(keyhdct,keyhdct,thoigian,"pending",user.getUid(),getCartList(),userNode);
+        rdbGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(rdbTien.isChecked()) {
+                    txtPayment.setText("Trả bằng tiền mặt");
+                    paymemt = "Trả bằng tiền mặt";
+                } else if (rdbNganHang.isChecked()) {
+                    txtPayment.setText("Trả bằng ngân hàng");
+                    paymemt = "Trả bằng ngân hàng";
+                }
+            }
+        });
+        HDCT hoadonchitiet = new HDCT(keyhdct,keyhdct,thoigian,"pending",user.getUid(), paymemt ,getCartList());
         hdctArrayList.add(hoadonchitiet);
             Log.i("size", String.valueOf(hdctArrayList.size()));
         if (getCartList().size() != 0){
@@ -160,19 +186,21 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
             btnthanhtoan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (paymemt.isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "Vui lòng chọn phương thúc thanh toán !!!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        daoHDCT = new DatabaseHDCT(ThanhToanActivity.this);
+                        for (HDCT hdct: hdctArrayList){
 
-
-                    daoHDCT = new DatabaseHDCT(ThanhToanActivity.this);
-                    for (HDCT hdct: hdctArrayList){
-
-                        daoHDCT.insert(hdct);
-                        sendNotifiaction(namestore,nameuser,"Xác nhận đơn hàng",user.getUid(),hdct.getIdHDCT());
+                            daoHDCT.insert(hdct);
+                            sendNotifiaction(namestore,nameuser,"Xác nhận đơn hàng",user.getUid(),hdct.getIdHDCT());
+                        }
+                        localstorage.deleteCart();
+                        rcvcart.setVisibility(View.GONE);
+                        linearbackground.setBackgroundResource(R.drawable.empty_cart);
+                        scrollView.setVisibility(View.GONE);
+                        linearLayout.setVisibility(View.GONE);
                     }
-                    localstorage.deleteCart();
-                    rcvcart.setVisibility(View.GONE);
-                    linearbackground.setBackgroundResource(R.drawable.empty_cart);
-                    scrollView.setVisibility(View.GONE);
-                    linearLayout.setVisibility(View.GONE);
                 }
             });
         }else {

@@ -147,7 +147,7 @@ public class intro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Mở màn hình đăng nhập
-                Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                Intent mainActivity = new Intent(getApplicationContext(), DangNhapActivity.class);
                 startActivity(mainActivity);
                 // Lưu lại biến boolean vào bộ nhớ để lần sau khi người dùng mở app
                 // Chúng ta sẽ biết họ đã vào introActivity rồi

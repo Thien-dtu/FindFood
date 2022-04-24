@@ -4,16 +4,16 @@ public class Order {
     String idorder;
     Food food;
     private int soluongmua;
-    Store store;
+    User user;
 
     public Order() {
     }
 
-    public Order(String idorder, Food food, int soluongmua, Store store) {
+    public Order(String idorder, Food food, int soluongmua, User user) {
         this.idorder = idorder;
         this.food = food;
         this.soluongmua = soluongmua;
-        this.store = store;
+        this.user = user;
     }
 
     public String getIdorder() {
@@ -40,11 +40,21 @@ public class Order {
         this.soluongmua = soluongmua;
     }
 
-    public Store getStore() {
-        return store;
+    public User getUser() {
+        return user;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "idorder='" + idorder + '\'' +
+                ", food=" + food +
+                ", soluongmua=" + soluongmua +
+                ", user=" + user +
+                '}';
     }
 }
