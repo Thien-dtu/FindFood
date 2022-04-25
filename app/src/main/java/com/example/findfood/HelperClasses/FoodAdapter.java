@@ -51,7 +51,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
     DatabaseReference databaseReference,fvrtref,fvrt_listRef;
     FirebaseUser user;
     DatabaseFood databaseFood;
-    Food food1 = null;
+    Food food1;
     Boolean mProcessLike =false;
     String Tag;
 
@@ -62,7 +62,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
 
     public class MyViewHolder1 extends RecyclerView.ViewHolder {
         ImageView imageView, likeBtn;
-        TextView title, txtdiachi, txtgia, txtTrangThai;
+        TextView title, txtdiachi, txtgia, txtTrangThai, txtPriceDiscount;
         ProgressBar progressBar;
         CardView cardView, cardView1, card_view4, vien, cardview_Nhan;
         LinearLayout khung;
@@ -79,6 +79,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
             vien = itemView.findViewById(R.id.vien);
             txtTrangThai = itemView.findViewById(R.id.txtTrangThai);
             likeBtn = itemView.findViewById(R.id.likeBtn);
+            txtPriceDiscount = itemView.findViewById(R.id.txtPriceDiscount);
             cardview_Nhan = itemView.findViewById(R.id.cardview_Nhan);
         }
     }
@@ -100,6 +101,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder1>
         Food categories = categoryList.get(position);
         holder.title.setText(categories.getTenSanPham());
         holder.txtdiachi.setText(categories.getDiaChi());
+        holder.txtPriceDiscount.setText(String.valueOf(food1.getGiaTien() * (100 - food1.getKhuyenMai() * 0.01)));
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseFood = new DatabaseFood(context);
         fvrtref = FirebaseDatabase.getInstance().getReference("favourites");

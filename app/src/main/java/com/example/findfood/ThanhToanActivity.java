@@ -178,9 +178,12 @@ public class ThanhToanActivity extends AppCompatActivity implements   FirebaseAu
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ThanhToanActivity.this,LinearLayoutManager.VERTICAL,false);
             rcvcart.setLayoutManager(linearLayoutManager);
             rcvcart.setAdapter(cartAdapter);
+            Order orderTest = null;
+            Log.d("order", "Thien" + orderTest.getFood().getKhuyenMai());
             for (Order order: getCartList()){
-                tongtien = tongtien+order.getSoluongmua() * order.getFood().getGiaTien();
+                tongtien = tongtien + (order.getFood().getGiaTien() * ((100 - order.getFood().getKhuyenMai()) * 0.01));;
             }
+
 
             txttientong.setText(decimalFormat.format(tongtien)+" VNĐ");
             btnthanhtoan.setOnClickListener(new View.OnClickListener() {
